@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Prepto</string>
+    <string name="zid">zID</string>
+    <string name="password">Password</string>
 </resources>
