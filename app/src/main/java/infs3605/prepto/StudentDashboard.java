@@ -44,6 +44,18 @@ public class StudentDashboard extends AppCompatActivity {
                         Intent a = new Intent(StudentDashboard.this, LoginPage.class);
                         startActivity(a);
                         break;
+                    case 1: //reminders  - TODO the others here
+                        Intent intent = new Intent(StudentDashboard.this, LoginPage.class);
+                        startActivity(intent);
+                        break;
+                    case 2: // settings
+                        Intent settings = new Intent(StudentDashboard.this, LoginPage.class);
+                        startActivity(settings);
+                        break;
+                    case 3: //help
+                        Intent help = new Intent(StudentDashboard.this, LoginPage.class);
+                        startActivity(help);
+                        break;
                     default:
                 }
             }
