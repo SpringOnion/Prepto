@@ -34,7 +34,8 @@
         </android.support.design.widget.TabLayout>
     </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/content_student_boxes" />
+    <include layout="@layout/content_student_card"
+        android:id="@+id/include" />
 
 </android.support.design.widget.CoordinatorLayout>
 
