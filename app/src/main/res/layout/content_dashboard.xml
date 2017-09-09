@@ -32,9 +32,13 @@
                 android:layout_height="wrap_content"
                 android:text="@string/chosenSub" />
         </android.support.design.widget.TabLayout>
-    </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/content_student_boxes" />
+        <include
+            android:id="@+id/include"
+            layout="@layout/content_student_card"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+    </android.support.design.widget.AppBarLayout>
 
 </android.support.design.widget.CoordinatorLayout>
 
