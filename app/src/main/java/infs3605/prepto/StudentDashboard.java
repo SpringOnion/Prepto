@@ -12,6 +12,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 
 public class StudentDashboard extends AppCompatActivity {
@@ -24,11 +25,21 @@ public class StudentDashboard extends AppCompatActivity {
     private ArrayAdapter<String> mDrawerAdapter;
     private CharSequence mDrawerTitle;
     private CharSequence mTitle;
+    private Button buttonNext;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student_dashboard);
+
+        buttonNext = (Button) findViewById(R.id.button_test);
+        buttonNext.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(StudentDashboard.this, WeeklyVideoPage.class);
+                startActivity(intent);
+            }
+        });
 
         mTitle = mDrawerTitle = getTitle();
         mNavigationDrawerItemTitles = getResources().getStringArray(R.array.navigation_drawer_items_array);
@@ -68,6 +79,7 @@ public class StudentDashboard extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
+
     }
 
 
