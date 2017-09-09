@@ -16,18 +16,22 @@ import android.widget.ListView;
 
 public class StudentDashboard extends AppCompatActivity {
 
+    Toolbar toolbar;
+    android.support.v7.app.ActionBarDrawerToggle mDrawerToggle;
+    private String[] mNavigationDrawerItemTitles;
+    private DrawerLayout mDrawerLayout;
     private ListView mDrawerList;
     private ArrayAdapter<String> mDrawerAdapter;
-    private ActionBarDrawerToggle mDrawerToggle;
-    private DrawerLayout mDrawerLayout;
-    private String mActivityTitle;
-
+    private CharSequence mDrawerTitle;
+    private CharSequence mTitle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student_dashboard);
 
+        mTitle = mDrawerTitle = getTitle();
+        mNavigationDrawerItemTitles = getResources().getStringArray(R.array.navigation_drawer_items_array);
         mDrawerLayout = (DrawerLayout) findViewById(R.id.dashboard);
         mDrawerList = (ListView) findViewById(R.id.navigationList);
         Toolbar studentToolbar = (Toolbar) findViewById(R.id.StudentToolbar);
@@ -41,7 +45,7 @@ public class StudentDashboard extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 switch (i) {
                     case 0: //calendar atm, TODO set these up
-                        Intent a = new Intent(StudentDashboard.this, LoginPage.class);
+                        Intent a = new Intent(StudentDashboard.this, CalendarPage.class);
                         startActivity(a);
                         break;
                     case 1: //reminders  - TODO the others here

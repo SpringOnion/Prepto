@@ -17,6 +17,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".StudentDashboard" />
+        <activity android:name=".CalendarPage"></activity>
     </application>
 
 </manifest>
