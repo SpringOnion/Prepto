@@ -33,6 +33,8 @@ public class StudentDashboard extends AppCompatActivity {
         setContentView(R.layout.activity_student_dashboard);
 
         buttonNext = (Button) findViewById(R.id.button_test);
+        //the next function is the one that the button uses
+        //@Amar
         buttonNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

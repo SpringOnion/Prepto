@@ -11,8 +11,8 @@ import com.google.android.youtube.player.YouTubePlayerView;
 public class WeeklyVideoPage extends YouTubeBaseActivity implements YouTubePlayer.OnInitializedListener {
 
     static final String GOOGLE_API_KEY = "AIzaSyClFw7LYLSxONvMZmyQz0L-eQ5Cz9GAIcM";
-    static final String YOUTUBE_VIDEO_ID = "x5xz__S6Q_c";
     private static final String TAG = "WeeklyVideoPage";
+    static String YOUTUBE_VIDEO_ID = "x5xz__S6Q_c";
     private YouTubePlayerView youTubeView;
 
     @Override
