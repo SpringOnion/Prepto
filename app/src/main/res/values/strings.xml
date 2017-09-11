@@ -8,6 +8,9 @@
     <string name="action_settings">Settings</string>
     <string name="chosenSub">INFS2607</string>
 
+    <string name="long_text">Short summary of tutorial content</string>
 
+    <string name="action_view">View</string>
+    <string name="action_flag">Flag</string>
 
 </resources>
