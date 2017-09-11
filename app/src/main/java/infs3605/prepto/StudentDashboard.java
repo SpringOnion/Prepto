@@ -12,22 +12,39 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 
 public class StudentDashboard extends AppCompatActivity {
 
+    Toolbar toolbar;
+    android.support.v7.app.ActionBarDrawerToggle mDrawerToggle;
+    private String[] mNavigationDrawerItemTitles;
+    private DrawerLayout mDrawerLayout;
     private ListView mDrawerList;
     private ArrayAdapter<String> mDrawerAdapter;
-    private ActionBarDrawerToggle mDrawerToggle;
-    private DrawerLayout mDrawerLayout;
-    private String mActivityTitle;
-
+    private CharSequence mDrawerTitle;
+    private CharSequence mTitle;
+    private Button buttonNext;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student_dashboard);
 
+        buttonNext = (Button) findViewById(R.id.button_test);
+        //the next function is the one that the button uses
+        //@Amar
+        buttonNext.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(StudentDashboard.this, WeeklyVideoPage.class);
+                startActivity(intent);
+            }
+        });
+
+        mTitle = mDrawerTitle = getTitle();
+        mNavigationDrawerItemTitles = getResources().getStringArray(R.array.navigation_drawer_items_array);
         mDrawerLayout = (DrawerLayout) findViewById(R.id.dashboard);
         mDrawerList = (ListView) findViewById(R.id.navigationList);
         Toolbar studentToolbar = (Toolbar) findViewById(R.id.StudentToolbar);
@@ -41,7 +58,7 @@ public class StudentDashboard extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 switch (i) {
                     case 0: //calendar atm, TODO set these up
-                        Intent a = new Intent(StudentDashboard.this, LoginPage.class);
+                        Intent a = new Intent(StudentDashboard.this, CalendarPage.class);
                         startActivity(a);
                         break;
                     case 1: //reminders  - TODO the others here
@@ -64,6 +81,7 @@ public class StudentDashboard extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
+
     }
 
 
