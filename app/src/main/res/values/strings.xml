@@ -12,6 +12,7 @@
 
     <string name="action_view">View</string>
     <string name="action_flag">Flag</string>
+
     <string-array name="navigation_drawer_items_array">
         <item>Calendar</item>
         <item>Reminders</item>
