@@ -41,7 +41,7 @@ android:padding="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="100dp"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/card_bg" />
+                    android:src="@drawable/apphome" />
 
                 <View
                     android:layout_width="match_parent"
@@ -109,7 +109,7 @@ android:padding="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="100dp"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/card_bg" />
+                    android:src="@drawable/apphome" />
 
                 <View
                     android:layout_width="match_parent"
@@ -177,7 +177,7 @@ android:padding="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="100dp"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/card_bg" />
+                    android:src="@drawable/apphome" />
 
                 <View
                     android:layout_width="match_parent"
