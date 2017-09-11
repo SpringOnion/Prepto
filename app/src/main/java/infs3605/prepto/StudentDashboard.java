@@ -10,7 +10,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -30,7 +29,7 @@ public class StudentDashboard extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_student_dashboard);
+        setContentView(R.layout.activity_navigation_test);
 
         buttonNext = (Button) findViewById(R.id.button_test);
         //the next function is the one that the button uses
@@ -45,12 +44,13 @@ public class StudentDashboard extends AppCompatActivity {
 
         mTitle = mDrawerTitle = getTitle();
         mNavigationDrawerItemTitles = getResources().getStringArray(R.array.navigation_drawer_items_array);
-        mDrawerLayout = (DrawerLayout) findViewById(R.id.dashboard);
-        mDrawerList = (ListView) findViewById(R.id.navigationList);
+        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer);
+        mDrawerList = (ListView) findViewById(R.id.navigation_view);
         Toolbar studentToolbar = (Toolbar) findViewById(R.id.StudentToolbar);
         setSupportActionBar(studentToolbar);
         addDrawerItems(); //calls the function below, which is hardcoded to add the specific items
         setupDrawer();
+        /*
         mDrawerList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             //this is the part that links the navigation to new pages
             //each case corresponds to the item in the list (0 is first, 1 is second, etc.)
@@ -77,6 +77,7 @@ public class StudentDashboard extends AppCompatActivity {
                 }
             }
         });
+        */
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
