@@ -1,15 +1,9 @@
 package infs3605.prepto;
 
-import android.content.Intent;
-import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -31,9 +25,8 @@ public class StudentDashboard extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_navigation_test);
 
+        /* This is the old button function
         buttonNext = (Button) findViewById(R.id.button_test);
-        //the next function is the one that the button uses
-        //@Amar
         buttonNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -41,15 +34,17 @@ public class StudentDashboard extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        */
+
 
         mTitle = mDrawerTitle = getTitle();
         mNavigationDrawerItemTitles = getResources().getStringArray(R.array.navigation_drawer_items_array);
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer);
-        mDrawerList = (ListView) findViewById(R.id.navigation_view);
+        //mDrawerList = (ListView) findViewById(R.id.navigation_view);
         Toolbar studentToolbar = (Toolbar) findViewById(R.id.StudentToolbar);
         setSupportActionBar(studentToolbar);
-        addDrawerItems(); //calls the function below, which is hardcoded to add the specific items
-        setupDrawer();
+        //addDrawerItems(); //calls the function below, which is hardcoded to add the specific items
+        //setupDrawer();
         /*
         mDrawerList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             //this is the part that links the navigation to new pages
@@ -77,16 +72,18 @@ public class StudentDashboard extends AppCompatActivity {
                 }
             }
         });
-        */
+
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
+        */
 
     }
 
 
     //function to add items to the navigation drawers
+    /*
     private void addDrawerItems() {
         //create array with the name of the buttons
         String[] menuArray = {"Calendar", "Reminders", "Settings", "Help"};
@@ -126,6 +123,7 @@ public class StudentDashboard extends AppCompatActivity {
         mDrawerToggle.onConfigurationChanged(newConfig);
     }
 
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -144,6 +142,7 @@ public class StudentDashboard extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+    */
 
 }
 
