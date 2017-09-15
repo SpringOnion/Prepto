@@ -13,6 +13,8 @@
     <string name="action_view">View</string>
     <string name="action_flag">Flag</string>
 
+    <string name="video_manuscript">Video manuscript</string>
+
     <string-array name="navigation_drawer_items_array">
         <item>Calendar</item>
         <item>Reminders</item>
