@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimary">#3f51b5</color>
     <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#40BA8A</color>
+    <color name="colorAccent">#40ba8a</color>
     <color name="colorUNSW">#ffaa00</color>
     <color name="White">#ffffff</color>
     <color name="primaryText">#333333</color>
     <color name="colorLemon">#fdd73e</color>
+    <color name="colorQuiz">#eb7d00</color>
 
 
 </resources>
