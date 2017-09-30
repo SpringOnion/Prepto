@@ -20,7 +20,8 @@
         </activity>
         <activity android:name=".StudentDashboard" />
         <activity android:name=".CalendarPage" />
-        <activity android:name=".WeeklyVideoPage"></activity>
+        <activity android:name=".WeeklyVideoPage" />
+        <activity android:name=".QuizPage" />
     </application>
 
 </manifest>

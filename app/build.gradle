@@ -28,6 +28,7 @@ dependencies {
     // CardView
     // Glide
     compile 'com.android.support:cardview-v7:26.0.1'
+    compile files('libs/YouTubeAndroidPlayerApi.jar')
     compile 'com.android.support:cardview-v7:26.0.1'
     compile 'com.android.support:appcompat-v7:26.0.1'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
@@ -35,9 +36,10 @@ dependencies {
     compile 'com.android.support:gridlayout-v7:26.0.1'
     compile 'com.android.support:recyclerview-v7:26.0.1'
     compile 'com.github.bumptech.glide:glide:3.7.0'
+    compile 'com.android.support:support-v4:26.+'
     testCompile 'junit:junit:4.12'
-    compile files('libs/YouTubeAndroidPlayerApi.jar')
 }
+
 
 
 
