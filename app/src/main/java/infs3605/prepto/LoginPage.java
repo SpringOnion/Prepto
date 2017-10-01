@@ -8,6 +8,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import static infs3605.prepto.R.id.BLogin;
+import static infs3605.prepto.R.id.TFpassword;
+import static infs3605.prepto.R.id.TFusername;
+
 public class LoginPage extends AppCompatActivity {
 
     public Button v;
@@ -21,11 +25,11 @@ public class LoginPage extends AppCompatActivity {
 
         public void onButtonClick(View v)
     {
-        if(v.getId() == R.id.BLogin)
+        if(v.getId() == BLogin)
         {
-            EditText a = (EditText)findViewById(R.id.TFusername);
+            EditText a = (EditText)findViewById(TFusername);
             String str = a.getText().toString();
-            EditText b = (EditText)findViewById(R.id.TFpassword);
+            EditText b = (EditText)findViewById(TFpassword);
             String pass = b.getText().toString();
 
             String password = helper.searchPass(str);
@@ -35,6 +39,12 @@ public class LoginPage extends AppCompatActivity {
                 i.putExtra("Username", str);
                 startActivity(i);
             }
+            if(v.getId() == R.id.Bsignup)
+            {
+            Intent i = new Intent(LoginPage.this, SignUp.class);
+                startActivity(i);
+
+        }
             else {
                 Toast temp = Toast.makeText(LoginPage.this, "Username and password dont match!", Toast.LENGTH_SHORT);
                 temp.show();
