@@ -16,7 +16,6 @@
         android:layout_weight="1.52"
         android:adjustViewBounds="true"
         android:scaleType="centerInside"
-        android:src="@drawable/apphome"
         android:visibility="visible"
         tools:layout_editor_absoluteX="-47dp"
         tools:layout_editor_absoluteY="-32dp" />
