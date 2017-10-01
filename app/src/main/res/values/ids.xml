@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="TFusername" type="id" />
+    <item name="TFpassword" type="id" />
+    <item name="BLogin" type="id" />
+</resources>
