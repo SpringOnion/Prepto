@@ -35,7 +35,7 @@ public class SignUp extends Activity {
             if(!pass1str.equals(pass2str))
             {
                 //popup msg
-                Toast pass = Toast.makeText(SignUp.this , "Passwords dont match kent!", Toast.LENGTH_SHORT);
+                Toast pass = Toast.makeText(SignUp.this , "Passwords dont match!", Toast.LENGTH_SHORT);
                 pass.show();
             }
 
