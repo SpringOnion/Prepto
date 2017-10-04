@@ -15,13 +15,26 @@ import static infs3605.prepto.R.id.TFusername;
 public class LoginPage extends AppCompatActivity {
 
     public Button v;
+    public Button signup;
     DatabaseHelper helper = new DatabaseHelper(this);
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);}
+        setContentView(R.layout.activity_login);
+
+        signup = (Button) findViewById(R.id.Bsignup);
+        signup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(LoginPage.this, SignUp.class);
+                startActivity(intent);
+
+            }
+        });
+
+    }
 
         public void onButtonClick(View v)
     {
