@@ -33,7 +33,7 @@ public class LoginPage extends AppCompatActivity {
 
             }
         });
-        v = (Button) findViewById(R.id.BLogin);
+        v = (Button) findViewById(R.id.Blogin);
         v.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
