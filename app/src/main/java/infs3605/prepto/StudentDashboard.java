@@ -26,7 +26,7 @@ public class StudentDashboard extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_navigation_test);
+        setContentView(R.layout.activity_navigation);
 
         b1 = (Button) findViewById(R.id.student_view_1);
         b1.setOnClickListener(new View.OnClickListener() {
