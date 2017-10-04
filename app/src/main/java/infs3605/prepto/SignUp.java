@@ -46,6 +46,7 @@ public class SignUp extends Activity {
                 pass.show();
             } else if (pass1str.equals(pass2str)) {
                 helper.insertContact(contact);
+                Toast.makeText(SignUp.this, namestr + " " + emailstr + " " + usernamestr, Toast.LENGTH_LONG).show();
             }
         }
     }
