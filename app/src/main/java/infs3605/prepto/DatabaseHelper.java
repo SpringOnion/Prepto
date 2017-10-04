@@ -1,11 +1,10 @@
 package infs3605.prepto;
 
-import android.content.Context;
 import android.content.ContentValues;
+import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.renderscript.Sampler;
 
 /**
  * Created by amarkashyap on 17/09/2017.
@@ -58,15 +57,13 @@ db.execSQL(TABLE_CREATE);
 
     public String searchPass(String username) {
         db = this.getReadableDatabase();
-        String query = "select username, pass from " + TABLE_NAME;
+        String query = "select username, pass from " + TABLE_NAME + " WHERE username ='" + username + "';";
         Cursor cursor = db.rawQuery(query, null);
         String a, b;
         b = "not found";
         if (cursor.moveToFirst()) {
             do {
                 a = cursor.getString(0);
-
-
                 if (a.equals(username)) {
                     b = cursor.getString(1);
                     break;
