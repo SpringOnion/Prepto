@@ -23,6 +23,9 @@
         <activity android:name=".WeeklyVideoPage" />
         <activity android:name=".QuizPage" />
         <activity android:name=".SignUp"></activity>
+        <activity android:name=".TeacherDashboard"></activity>
+
+
     </application>
 
 </manifest>

@@ -11,6 +11,9 @@ import android.widget.Toast;
  */
 
 public class SignUp extends Activity {
+
+    DatabaseHelper helper = new DatabaseHelper(this);
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -18,13 +21,15 @@ public class SignUp extends Activity {
     }
     public void onSignUpClick(View v)
     {
+
+
         if(v.getId() == R.id.Bsignupbutton)
         {
-            EditText name = (EditText)findViewById((R.id.TFname));
-            EditText email = (EditText)findViewById((R.id.TFemail));
-            EditText username = (EditText)findViewById((R.id.TFusername));
-            EditText pass1 = (EditText)findViewById((R.id.TFpass1));
-            EditText pass2 = (EditText)findViewById((R.id.TFpass2));
+            EditText name = findViewById((R.id.TFname));
+            EditText email = findViewById((R.id.TFemail));
+            EditText username = findViewById((R.id.TFusername));
+            EditText pass1 = findViewById((R.id.TFpass1));
+            EditText pass2 = findViewById((R.id.TFpass2));
 
             String namestr = name.getText().toString();
             String emailstr = email.getText().toString();
@@ -32,13 +37,16 @@ public class SignUp extends Activity {
             String pass1str = pass1.getText().toString();
             String pass2str = pass2.getText().toString();
 
+            Contact contact = new Contact(namestr, emailstr, usernamestr, pass1str);
+
             if(!pass1str.equals(pass2str))
             {
                 //popup msg
                 Toast pass = Toast.makeText(SignUp.this , "Passwords dont match!", Toast.LENGTH_SHORT);
                 pass.show();
+            } else if (pass1str.equals(pass2str)) {
+                helper.insertContact(contact);
             }
-
         }
     }
 }
