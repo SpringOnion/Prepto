@@ -33,7 +33,26 @@ public class LoginPage extends AppCompatActivity {
 
             }
         });
+        v = (Button) findViewById(R.id.BLogin);
+        v.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                EditText a = (EditText) findViewById(TFusername);
+                String str = a.getText().toString();
+                EditText b = (EditText) findViewById(TFpassword);
+                String pass = b.getText().toString();
 
+                Toast.makeText(LoginPage.this, str, Toast.LENGTH_SHORT).show();
+                String password = helper.searchPass(str);
+                if (pass.equals(password)) {
+                    Toast.makeText(LoginPage.this, "Everything's working! Yay", Toast.LENGTH_SHORT).show();
+                    Intent i = new Intent(LoginPage.this, StudentDashboard.class);
+                    i.putExtra("Username", str);
+                    startActivity(i);
+                }
+
+            }
+        });
     }
 
         public void onButtonClick(View v)
