@@ -1,10 +1,14 @@
 package infs3605.prepto;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.ipaulpro.afilechooser.utils.FileUtils;
 
 import java.io.File;
 
@@ -28,12 +32,33 @@ public class QuizPage extends AppCompatActivity {
     int score;
     int totalAnswered;
 
-    File excelSheet = new File("assets/PreptoQuestions  ");
+    File excelSheet = new File("PreptoQuestions");
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        switch (requestCode) {
+            case 1234:
+                if (resultCode == RESULT_OK) {
+                    final Uri uri = data.getData();
+                    String path = FileUtils.getPath(this, uri);
+                    if (path != null && FileUtils.isLocal(path)) {
+                        File file = new File(path);
+                    }
+                }
+                break;
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz);
+
+        Intent getContentIntent = FileUtils.createGetContentIntent();
+        Intent intent = Intent.createChooser(getContentIntent, "Select a File");
+        startActivityForResult(intent, 1234);
+
         responses = new String[10];
 
         question = (TextView) findViewById(R.id.text_question);
@@ -95,7 +120,7 @@ public class QuizPage extends AppCompatActivity {
             }
         });
 
-        excelSheet = new File("assets/PreptoQuestions");
+
         try {
             Workbook workbook = Workbook.getWorkbook(excelSheet);
             Sheet sheet = workbook.getSheet(1);
@@ -112,5 +137,6 @@ public class QuizPage extends AppCompatActivity {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
+
     }
 }

@@ -18,10 +18,12 @@ public class LoginPage extends AppCompatActivity {
     DatabaseHelper helper = new DatabaseHelper(this);
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
 
         signup = (Button) findViewById(R.id.Bsignup);
         signup.setOnClickListener(new View.OnClickListener() {
@@ -85,6 +87,4 @@ public class LoginPage extends AppCompatActivity {
 
         }
     }
-
-
-            }
+}
