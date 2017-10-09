@@ -2,7 +2,7 @@
 <resources>
     <color name="colorPrimary">#3f51b5</color>
     <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#40ba8a</color>
+    <color name="colorAccent">#2e8765</color>
     <color name="colorUNSW">#ffaa00</color>
     <color name="White">#ffffff</color>
     <color name="primaryText">#333333</color>
