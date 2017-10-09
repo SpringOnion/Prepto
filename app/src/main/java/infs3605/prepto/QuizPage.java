@@ -1,10 +1,14 @@
 package infs3605.prepto;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.ipaulpro.afilechooser.utils.FileUtils;
 
 import java.io.File;
 
@@ -28,15 +32,51 @@ public class QuizPage extends AppCompatActivity {
     int score;
     int totalAnswered;
 
-    File excelSheet = new File("assets/PreptoQuestions  ");
+    File excelSheet;
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+                if (resultCode == RESULT_OK) {
+                    final Uri uri = data.getData();
+                    String path = FileUtils.getPath(this, uri);
+                    if (path != null && FileUtils.isLocal(path)) {
+                        excelSheet = new File(path);
+                    }
+                    try {
+                        Workbook workbook = Workbook.getWorkbook(excelSheet);
+                        Sheet sheet = workbook.getSheet(0);
+                        Cell cellText = sheet.getCell(0, 1);
+                        question.setText(cellText.getContents());
+                        cellText = sheet.getCell(1, 1);
+                        answerA.setText(cellText.getContents());
+                        cellText = sheet.getCell(2, 1);
+                        answerB.setText(cellText.getContents());
+                        cellText = sheet.getCell(3, 1);
+                        answerC.setText(cellText.getContents());
+                        cellText = sheet.getCell(4, 1);
+                        answerD.setText(cellText.getContents());
+                        cellText = sheet.getCell(5, 1);
+                        correctAnswer = "answer" + cellText.getContents();
+                    } catch (Exception ex) {
+                        Toast.makeText(this, ex.toString(), Toast.LENGTH_SHORT).show();
+                    }
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz);
+
+        Intent getContentIntent = FileUtils.createGetContentIntent();
+        Intent intent = Intent.createChooser(getContentIntent, "Select a File");
+        startActivityForResult(intent, 1234);
+
         responses = new String[10];
 
         question = (TextView) findViewById(R.id.text_question);
+        question.setText("This is testing purposes");
         correctAnswer = "answerA";
         answerA = (TextView) findViewById(R.id.textcardA);
         answerA.setOnClickListener(new View.OnClickListener() {
@@ -47,7 +87,7 @@ public class QuizPage extends AppCompatActivity {
                 } else {
                 }
                 responses[totalAnswered] = "answerA";
-                Toast toast = Toast.makeText(getApplicationContext(), "Answer " + totalAnswered + ": " + responses[totalAnswered], Toast.LENGTH_LONG);
+                Toast toast = Toast.makeText(getApplicationContext(), "Answer " + totalAnswered + ": " + responses[totalAnswered] + ", Score = " + score, Toast.LENGTH_LONG);
                 toast.show();
                 totalAnswered++;
             }
@@ -61,7 +101,7 @@ public class QuizPage extends AppCompatActivity {
                 } else {
                 }
                 responses[totalAnswered] = "answerB";
-                Toast toast = Toast.makeText(getApplicationContext(), "Answer " + totalAnswered + ": " + responses[totalAnswered], Toast.LENGTH_LONG);
+                Toast toast = Toast.makeText(getApplicationContext(), "Answer " + totalAnswered + ": " + responses[totalAnswered] + ", Score = " + score, Toast.LENGTH_LONG);
                 toast.show();
                 totalAnswered++;
             }
@@ -75,7 +115,7 @@ public class QuizPage extends AppCompatActivity {
                 } else {
                 }
                 responses[totalAnswered] = "answerC";
-                Toast toast = Toast.makeText(getApplicationContext(), "Answer " + totalAnswered + ": " + responses[totalAnswered], Toast.LENGTH_LONG);
+                Toast toast = Toast.makeText(getApplicationContext(), "Answer " + totalAnswered + ": " + responses[totalAnswered] + ", Score = " + score, Toast.LENGTH_LONG);
                 toast.show();
                 totalAnswered++;
             }
@@ -89,28 +129,12 @@ public class QuizPage extends AppCompatActivity {
                 } else {
                 }
                 responses[totalAnswered] = "answerD";
-                Toast toast = Toast.makeText(getApplicationContext(), "Answer " + totalAnswered + ": " + responses[totalAnswered], Toast.LENGTH_LONG);
+                Toast toast = Toast.makeText(getApplicationContext(), "Answer " + totalAnswered + ": " + responses[totalAnswered] + ", Score = " + score, Toast.LENGTH_LONG);
                 toast.show();
                 totalAnswered++;
             }
         });
 
-        excelSheet = new File("assets/PreptoQuestions");
-        try {
-            Workbook workbook = Workbook.getWorkbook(excelSheet);
-            Sheet sheet = workbook.getSheet(1);
-            Cell cellText = sheet.getCell(1, 2);
-            question.setText(cellText.getContents());
-            cellText = sheet.getCell(2, 2);
-            answerA.setText(cellText.getContents());
-            cellText = sheet.getCell(3, 2);
-            answerB.setText(cellText.getContents());
-            cellText = sheet.getCell(4, 2);
-            answerC.setText(cellText.getContents());
-            cellText = sheet.getCell(5, 2);
-            answerD.setText(cellText.getContents());
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
+
     }
 }

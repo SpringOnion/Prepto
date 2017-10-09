@@ -31,7 +31,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-db.execSQL(TABLE_CREATE);
+        db.execSQL(TABLE_CREATE);
         this.db = db;
     }
 
@@ -51,6 +51,7 @@ db.execSQL(TABLE_CREATE);
         values.put(COLUMN_PASS , c.getPass());
 
         db.insert(TABLE_NAME , null, values);
+        cursor.close();
         db.close();
 
     }
