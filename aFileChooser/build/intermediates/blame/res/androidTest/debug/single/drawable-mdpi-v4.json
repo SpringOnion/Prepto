@@ -1,34 +1,18 @@
 [
     {
-        "merged": "/Users/daphnenguyen/StudioProjects/Prepto/C:\\Users\\chenz\\Documents\\Uni\\Prepto\\aFileChooser\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-mdpi-v4\\ic_provider.png",
-        "source": "/Users/daphnenguyen/StudioProjects/Prepto/C:\\Users\\chenz\\Documents\\Uni\\Prepto\\aFileChooser\\build\\intermediates\\bundles\\debug\\res\\drawable-mdpi-v4\\ic_provider.png"
+        "merged": "C:\\Users\\chenz\\Documents\\Uni\\Prepto\\aFileChooser\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-mdpi-v4\\ic_provider.png",
+        "source": "C:\\Users\\chenz\\Documents\\Uni\\Prepto\\aFileChooser\\build\\intermediates\\bundles\\debug\\res\\drawable-mdpi-v4\\ic_provider.png"
     },
     {
-        "merged": "/Users/daphnenguyen/StudioProjects/Prepto/aFileChooser/build/intermediates/res/merged/androidTest/debug/drawable-mdpi-v4/ic_provider.png",
-        "source": "/Users/daphnenguyen/StudioProjects/Prepto/aFileChooser/build/intermediates/bundles/debug/res/drawable-mdpi-v4/ic_provider.png"
+        "merged": "C:\\Users\\chenz\\Documents\\Uni\\Prepto\\aFileChooser\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-mdpi-v4\\ic_file.png",
+        "source": "C:\\Users\\chenz\\Documents\\Uni\\Prepto\\aFileChooser\\build\\intermediates\\bundles\\debug\\res\\drawable-mdpi-v4\\ic_file.png"
     },
     {
-        "merged": "/Users/daphnenguyen/StudioProjects/Prepto/C:\\Users\\chenz\\Documents\\Uni\\Prepto\\aFileChooser\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-mdpi-v4\\ic_file.png",
-        "source": "/Users/daphnenguyen/StudioProjects/Prepto/C:\\Users\\chenz\\Documents\\Uni\\Prepto\\aFileChooser\\build\\intermediates\\bundles\\debug\\res\\drawable-mdpi-v4\\ic_file.png"
+        "merged": "C:\\Users\\chenz\\Documents\\Uni\\Prepto\\aFileChooser\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-mdpi-v4\\ic_chooser.png",
+        "source": "C:\\Users\\chenz\\Documents\\Uni\\Prepto\\aFileChooser\\build\\intermediates\\bundles\\debug\\res\\drawable-mdpi-v4\\ic_chooser.png"
     },
     {
-        "merged": "/Users/daphnenguyen/StudioProjects/Prepto/C:\\Users\\chenz\\Documents\\Uni\\Prepto\\aFileChooser\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-mdpi-v4\\ic_chooser.png",
-        "source": "/Users/daphnenguyen/StudioProjects/Prepto/C:\\Users\\chenz\\Documents\\Uni\\Prepto\\aFileChooser\\build\\intermediates\\bundles\\debug\\res\\drawable-mdpi-v4\\ic_chooser.png"
-    },
-    {
-        "merged": "/Users/daphnenguyen/StudioProjects/Prepto/C:\\Users\\chenz\\Documents\\Uni\\Prepto\\aFileChooser\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-mdpi-v4\\ic_folder.png",
-        "source": "/Users/daphnenguyen/StudioProjects/Prepto/C:\\Users\\chenz\\Documents\\Uni\\Prepto\\aFileChooser\\build\\intermediates\\bundles\\debug\\res\\drawable-mdpi-v4\\ic_folder.png"
-    },
-    {
-        "merged": "/Users/daphnenguyen/StudioProjects/Prepto/aFileChooser/build/intermediates/res/merged/androidTest/debug/drawable-mdpi-v4/ic_file.png",
-        "source": "/Users/daphnenguyen/StudioProjects/Prepto/aFileChooser/build/intermediates/bundles/debug/res/drawable-mdpi-v4/ic_file.png"
-    },
-    {
-        "merged": "/Users/daphnenguyen/StudioProjects/Prepto/aFileChooser/build/intermediates/res/merged/androidTest/debug/drawable-mdpi-v4/ic_chooser.png",
-        "source": "/Users/daphnenguyen/StudioProjects/Prepto/aFileChooser/build/intermediates/bundles/debug/res/drawable-mdpi-v4/ic_chooser.png"
-    },
-    {
-        "merged": "/Users/daphnenguyen/StudioProjects/Prepto/aFileChooser/build/intermediates/res/merged/androidTest/debug/drawable-mdpi-v4/ic_folder.png",
-        "source": "/Users/daphnenguyen/StudioProjects/Prepto/aFileChooser/build/intermediates/bundles/debug/res/drawable-mdpi-v4/ic_folder.png"
+        "merged": "C:\\Users\\chenz\\Documents\\Uni\\Prepto\\aFileChooser\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-mdpi-v4\\ic_folder.png",
+        "source": "C:\\Users\\chenz\\Documents\\Uni\\Prepto\\aFileChooser\\build\\intermediates\\bundles\\debug\\res\\drawable-mdpi-v4\\ic_folder.png"
     }
 ]

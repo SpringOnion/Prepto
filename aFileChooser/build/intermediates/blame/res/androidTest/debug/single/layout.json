@@ -1,10 +1,6 @@
 [
     {
-        "merged": "/Users/daphnenguyen/StudioProjects/Prepto/C:\\Users\\chenz\\Documents\\Uni\\Prepto\\aFileChooser\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\file.xml",
-        "source": "/Users/daphnenguyen/StudioProjects/Prepto/C:\\Users\\chenz\\Documents\\Uni\\Prepto\\aFileChooser\\build\\intermediates\\bundles\\debug\\res\\layout\\file.xml"
-    },
-    {
-        "merged": "/Users/daphnenguyen/StudioProjects/Prepto/aFileChooser/build/intermediates/res/merged/androidTest/debug/layout/file.xml",
-        "source": "/Users/daphnenguyen/StudioProjects/Prepto/aFileChooser/build/intermediates/bundles/debug/res/layout/file.xml"
+        "merged": "C:\\Users\\chenz\\Documents\\Uni\\Prepto\\aFileChooser\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\file.xml",
+        "source": "C:\\Users\\chenz\\Documents\\Uni\\Prepto\\aFileChooser\\build\\intermediates\\bundles\\debug\\res\\layout\\file.xml"
     }
 ]
