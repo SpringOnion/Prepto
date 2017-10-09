@@ -10,7 +10,6 @@ import android.widget.Toast;
 
 import static infs3605.prepto.R.id.BLogin;
 import static infs3605.prepto.R.id.TFpassword;
-import static infs3605.prepto.R.id.TFusername;
 
 public class LoginPage extends AppCompatActivity {
 
@@ -37,7 +36,7 @@ public class LoginPage extends AppCompatActivity {
         v.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                EditText a = (EditText) findViewById(TFusername);
+                EditText a = (EditText) findViewById(R.id.TFuname);
                 String str = a.getText().toString();
                 EditText b = (EditText) findViewById(TFpassword);
                 String pass = b.getText().toString();
@@ -59,7 +58,7 @@ public class LoginPage extends AppCompatActivity {
     {
         if(v.getId() == BLogin)
         {
-            EditText a = (EditText)findViewById(TFusername);
+            EditText a = (EditText) findViewById(R.id.TFuname);
             String str = a.getText().toString();
             EditText b = (EditText)findViewById(TFpassword);
             String pass = b.getText().toString();
