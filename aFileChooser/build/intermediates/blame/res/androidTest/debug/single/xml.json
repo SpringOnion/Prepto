@@ -1,6 +1,10 @@
 [
     {
-        "merged": "C:\\Users\\chenz\\Documents\\Uni\\Prepto\\aFileChooser\\build\\intermediates\\res\\merged\\androidTest\\debug\\xml\\mimetypes.xml",
-        "source": "C:\\Users\\chenz\\Documents\\Uni\\Prepto\\aFileChooser\\build\\intermediates\\bundles\\debug\\res\\xml\\mimetypes.xml"
+        "merged": "/Users/daphnenguyen/StudioProjects/Prepto/C:\\Users\\chenz\\Documents\\Uni\\Prepto\\aFileChooser\\build\\intermediates\\res\\merged\\androidTest\\debug\\xml\\mimetypes.xml",
+        "source": "/Users/daphnenguyen/StudioProjects/Prepto/C:\\Users\\chenz\\Documents\\Uni\\Prepto\\aFileChooser\\build\\intermediates\\bundles\\debug\\res\\xml\\mimetypes.xml"
+    },
+    {
+        "merged": "/Users/daphnenguyen/StudioProjects/Prepto/aFileChooser/build/intermediates/res/merged/androidTest/debug/xml/mimetypes.xml",
+        "source": "/Users/daphnenguyen/StudioProjects/Prepto/aFileChooser/build/intermediates/bundles/debug/res/xml/mimetypes.xml"
     }
 ]

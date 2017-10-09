@@ -17,8 +17,8 @@
         android:adjustViewBounds="true"
         android:scaleType="centerInside"
         android:visibility="visible"
-        tools:layout_editor_absoluteX="-47dp"
-        tools:layout_editor_absoluteY="-32dp" />
+        tools:layout_editor_absoluteX="-33dp"
+        tools:layout_editor_absoluteY="-31dp" />
 
     <LinearLayout
         android:layout_width="368dp"
@@ -76,8 +76,8 @@
         android:layout_width="272dp"
         android:layout_height="27dp"
         android:text="Username"
-        tools:layout_editor_absoluteX="48dp"
-        tools:layout_editor_absoluteY="130dp" />
+        tools:layout_editor_absoluteX="36dp"
+        tools:layout_editor_absoluteY="200dp" />
 
     <EditText
         android:id="@+id/TFuname"
@@ -85,7 +85,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
-        tools:layout_editor_absoluteX="48dp"
-        tools:layout_editor_absoluteY="157dp" />
+        tools:layout_editor_absoluteX="36dp"
+        tools:layout_editor_absoluteY="219dp" />
 
 </android.support.constraint.ConstraintLayout>
