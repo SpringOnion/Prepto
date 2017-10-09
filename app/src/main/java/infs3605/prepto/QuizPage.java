@@ -6,6 +6,12 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.File;
+
+import jxl.Cell;
+import jxl.Sheet;
+import jxl.Workbook;
+
 /**
  * Created by chenz on 30/09/2017.
  */
@@ -21,6 +27,8 @@ public class QuizPage extends AppCompatActivity {
     String[] responses;
     int score;
     int totalAnswered;
+
+    File excelSheet = new File("assets/PreptoQuestions  ");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,5 +94,23 @@ public class QuizPage extends AppCompatActivity {
                 totalAnswered++;
             }
         });
+
+        excelSheet = new File("assets/PreptoQuestions");
+        try {
+            Workbook workbook = Workbook.getWorkbook(excelSheet);
+            Sheet sheet = workbook.getSheet(1);
+            Cell cellText = sheet.getCell(1, 2);
+            question.setText(cellText.getContents());
+            cellText = sheet.getCell(2, 2);
+            answerA.setText(cellText.getContents());
+            cellText = sheet.getCell(3, 2);
+            answerB.setText(cellText.getContents());
+            cellText = sheet.getCell(4, 2);
+            answerC.setText(cellText.getContents());
+            cellText = sheet.getCell(5, 2);
+            answerD.setText(cellText.getContents());
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
     }
 }
