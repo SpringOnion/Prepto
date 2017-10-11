@@ -45,12 +45,11 @@ public class LoginPage extends AppCompatActivity {
 
                 String password = helper.searchPass(str);
                 if (pass.equals(password)) {
-                    //Intent i = new Intent(LoginPage.this, StudentDashboard.class);
-                    Intent i = new Intent(LoginPage.this, TeacherDashboard.class);
+                    Intent i = new Intent(LoginPage.this, StudentDashboard.class);
+                    //Intent i = new Intent(LoginPage.this, TeacherDashboard.class);
                     i.putExtra("Username", str);
                     startActivity(i);
                 }
-
             }
         });
     }

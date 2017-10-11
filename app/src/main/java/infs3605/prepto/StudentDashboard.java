@@ -33,6 +33,7 @@ public class StudentDashboard extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(StudentDashboard.this, WeeklyVideoPage.class);
+                intent.putExtra("Week", 1);
                 startActivity(intent);
             }
         });        /* This is the old button function

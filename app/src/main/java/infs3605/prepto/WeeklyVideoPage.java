@@ -23,7 +23,6 @@ public class WeeklyVideoPage extends YouTubeBaseActivity implements YouTubePlaye
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_weekly_video_page_test);
-
         //youTubeView = findViewById(R.id.youtube_view);
         //youTubeView.initialize(GOOGLE_API_KEY, this);
         youTubePlayerFragment = (YouTubePlayerFragment) getFragmentManager().findFragmentById(R.id.youtubeplayerfragment);
@@ -32,7 +31,9 @@ public class WeeklyVideoPage extends YouTubeBaseActivity implements YouTubePlaye
         buttonNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                int week = getIntent().getExtras().getInt("Week");
                 Intent intent = new Intent(WeeklyVideoPage.this, QuizPage.class);
+                intent.putExtra("Week", week);
                 startActivity(intent);
             }
         });
