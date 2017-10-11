@@ -8,6 +8,10 @@ public class Question {
     String question, answerA, answerB, answerC, answerD, correctAnswer;
     int quiz;
 
+    public Question() {
+
+    }
+
     public Question(String question, String answerA, String answerB, String answerC, String answerD, String correctAnswer, int quiz) {
         this.question = question;
         this.answerA = answerA;

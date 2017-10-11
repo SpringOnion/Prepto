@@ -63,18 +63,20 @@ public class TeacherDashboard extends AppCompatActivity {
                 int j = 0;
                 Cell cellText;
                 while (j < i) {
+                    Question question = new Question();
                     cellText = sheet.getCell(j, 0);
-                    questions[j].question = cellText.getContents();
+                    question.question = cellText.getContents();
                     cellText = sheet.getCell(j, 1);
-                    questions[j].answerA = cellText.getContents();
+                    question.answerA = cellText.getContents();
                     cellText = sheet.getCell(j, 2);
-                    questions[j].answerB = cellText.getContents();
+                    question.answerB = cellText.getContents();
                     cellText = sheet.getCell(j, 3);
-                    questions[j].answerC = cellText.getContents();
+                    question.answerC = cellText.getContents();
                     cellText = sheet.getCell(j, 4);
-                    questions[j].answerD = cellText.getContents();
+                    question.answerD = cellText.getContents();
                     cellText = sheet.getCell(j, 5);
-                    questions[j].correctAnswer = cellText.getContents();
+                    question.correctAnswer = cellText.getContents();
+                    questions[j] = question;
                 }
                 int k = 0;
                 while (k <= j) {
