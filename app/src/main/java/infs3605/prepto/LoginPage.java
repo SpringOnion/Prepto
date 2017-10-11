@@ -50,7 +50,6 @@ public class LoginPage extends AppCompatActivity {
                     i.putExtra("Username", str);
                     startActivity(i);
                 }
-
             }
         });
     }

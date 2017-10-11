@@ -65,11 +65,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String query = "SELECT * FROM QUESTIONS";
         String getQuizCount = "SELECT quiz FROM QUESTIONS";
         Cursor quizCursor = db.rawQuery(getQuizCount, null);
-        int quizCount = 0;
+        int quizCount;
         if (quizCursor.moveToLast()) {
             quizCount = quizCursor.getInt(0);
         } else {
-            quizCount = 0;
+            quizCount = 1;
         }
 
         quizCursor.close();
@@ -87,6 +87,25 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.insert("QUESTIONS", null, values);
         cursor.close();
         db.close();
+    }
+
+    public Question[] getQuestions(int quiz) {
+        db = this.getReadableDatabase();
+        String query = "SELECT * FROM QUESTIONS WHERE quiz = " + quiz + "; ";
+        Cursor cursor = db.rawQuery(query, null);
+        int count = cursor.getCount();
+        Question[] questions = new Question[count];
+        int i = 0;
+        while (i < count) {
+            questions[i].question = cursor.getString(cursor.getColumnIndex("question"));
+            questions[i].answerA = cursor.getString(cursor.getColumnIndex("answera"));
+            questions[i].answerB = cursor.getString(cursor.getColumnIndex("answerb"));
+            questions[i].answerC = cursor.getString(cursor.getColumnIndex("answerc"));
+            questions[i].answerD = cursor.getString(cursor.getColumnIndex("anwerd"));
+            questions[i].correctAnswer = cursor.getString(cursor.getColumnIndex("correctanswer"));
+            questions[i].quiz = cursor.getInt(cursor.getColumnIndex("quiz"));
+        }
+        return questions;
     }
 
     public String searchPass(String username) {
