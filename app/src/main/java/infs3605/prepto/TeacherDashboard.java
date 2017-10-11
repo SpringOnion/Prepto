@@ -77,6 +77,7 @@ public class TeacherDashboard extends AppCompatActivity {
                     cellText = sheet.getCell(j, 5);
                     question.correctAnswer = cellText.getContents();
                     questions[j] = question;
+                    j++;
                 }
                 int k = 0;
                 while (k <= j) {
