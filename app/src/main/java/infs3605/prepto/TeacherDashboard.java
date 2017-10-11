@@ -20,6 +20,7 @@ public class TeacherDashboard extends AppCompatActivity {
 
     private Button buttonFile;
     private File excelBook;
+    private DatabaseHelper dbHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,6 +76,12 @@ public class TeacherDashboard extends AppCompatActivity {
                     cellText = sheet.getCell(j, 5);
                     questions[j].correctAnswer = cellText.getContents();
                 }
+                int k = 0;
+                while (k <= j) {
+                    dbHelper.insertQuestions(questions[k]);
+                    k++;
+                }
+                Toast.makeText(TeacherDashboard.this, "Quiz Uploaded! " + k + " questions added in total", Toast.LENGTH_LONG).show();
 
             } catch (Exception ex) {
                 Toast.makeText(this, ex.toString(), Toast.LENGTH_SHORT).show();

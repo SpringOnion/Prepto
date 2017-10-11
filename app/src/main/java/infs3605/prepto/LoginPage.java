@@ -43,11 +43,10 @@ public class LoginPage extends AppCompatActivity {
                 EditText b = (EditText) findViewById(TFpassword);
                 String pass = b.getText().toString();
 
-                Toast.makeText(LoginPage.this, str, Toast.LENGTH_SHORT).show();
                 String password = helper.searchPass(str);
                 if (pass.equals(password)) {
-                    Toast.makeText(LoginPage.this, "Everything's working! Yay", Toast.LENGTH_SHORT).show();
-                    Intent i = new Intent(LoginPage.this, StudentDashboard.class);
+                    //Intent i = new Intent(LoginPage.this, StudentDashboard.class);
+                    Intent i = new Intent(LoginPage.this, TeacherDashboard.class);
                     i.putExtra("Username", str);
                     startActivity(i);
                 }

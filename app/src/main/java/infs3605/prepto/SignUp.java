@@ -1,6 +1,7 @@
 package infs3605.prepto;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -46,7 +47,9 @@ public class SignUp extends Activity {
                 pass.show();
             } else if (pass1str.equals(pass2str)) {
                 helper.insertContact(contact);
-                Toast.makeText(SignUp.this, namestr + " " + emailstr + " " + usernamestr, Toast.LENGTH_LONG).show();
+                Toast.makeText(SignUp.this, "Signup complete, " + usernamestr, Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(SignUp.this, LoginPage.class);
+                startActivity(intent);
             }
         }
     }
