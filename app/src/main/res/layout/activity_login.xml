@@ -56,12 +56,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:backgroundTint="#ffff"
-                android:drawableLeft="@drawable/user"
                 android:hint="   Username"
                 android:inputType="textPersonName"
                 android:singleLine="true"
                 android:textColor="@android:color/white"
                 android:textSize="20sp" />
+
+            <!--android:drawableStart="@drawable/user"-->
 
         </android.support.design.widget.TextInputLayout>
 
@@ -77,12 +78,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:backgroundTint="#ffff"
-                android:drawableLeft="@drawable/smallicon"
                 android:hint="   Password"
                 android:inputType="textPersonName"
                 android:singleLine="true"
                 android:textColor="#ffffff"
                 android:textSize="20sp" />
+
+            <!--android:drawableLeft="@drawable/smallicon" -->
 
         </android.support.design.widget.TextInputLayout>
 

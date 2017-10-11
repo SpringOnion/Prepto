@@ -22,8 +22,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private SQLiteDatabase db;
     private static final String TABLE_CREATE = "create table contacts (id integer primary key not null, " + "" +
             "name text not null, email text not null, username text not null, pass text not null)";
-
-
+    private static final String TABLE_CREATE_QUIZ = "CREATE TABLE QUESTIONS (ID integer primary key autoincrement, " +
+            "question text not null, answerA text not null, answerB text not null, " +
+            "answerC text not null, answerD text not null, correctanswer text not null, " +
+            "quiz integer not null); ";
 
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, 1);
@@ -32,6 +34,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(TABLE_CREATE);
+        db.execSQL(TABLE_CREATE_QUIZ);
         this.db = db;
     }
 
@@ -56,6 +59,36 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     }
 
+    public void insertQuestions(Question question) {
+        db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        String query = "SELECT * FROM QUESTIONS";
+        String getQuizCount = "SELECT quiz FROM QUESTIONS";
+        Cursor quizCursor = db.rawQuery(getQuizCount, null);
+        int quizCount = 0;
+        if (quizCursor.moveToLast()) {
+            quizCount = quizCursor.getInt(0);
+        } else {
+            quizCount = 0;
+        }
+
+        quizCursor.close();
+
+        Cursor cursor = db.rawQuery(query, null);
+        int count = cursor.getCount();
+        values.put("ID", count);
+        values.put("question", question.getQuestion());
+        values.put("answera", question.getAnswerA());
+        values.put("answerb", question.getAnswerB());
+        values.put("answerc", question.getAnswerC());
+        values.put("answerd", question.getAnswerD());
+        values.put("quiz", quizCount);
+
+        db.insert("QUESTIONS", null, values);
+        cursor.close();
+        db.close();
+    }
+
     public String searchPass(String username) {
         db = this.getReadableDatabase();
         String query = "select username, pass from " + TABLE_NAME + " WHERE username ='" + username + "';";
@@ -72,9 +105,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             }
             while (cursor.moveToNext());
         }
+        cursor.close();
         return b;
-
-
     }
 
 
