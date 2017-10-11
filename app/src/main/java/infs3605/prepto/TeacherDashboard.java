@@ -20,7 +20,7 @@ public class TeacherDashboard extends AppCompatActivity {
 
     private Button buttonFile;
     private File excelBook;
-    private DatabaseHelper dbHelper;
+    private DatabaseHelper dbHelper = new DatabaseHelper(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
