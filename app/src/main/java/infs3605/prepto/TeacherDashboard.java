@@ -19,6 +19,7 @@ import jxl.Workbook;
 public class TeacherDashboard extends AppCompatActivity {
 
     private Button buttonFile;
+    private Button buttonDownload;
     private File excelBook;
     private DatabaseHelper dbHelper = new DatabaseHelper(this);
 
@@ -36,6 +37,16 @@ public class TeacherDashboard extends AppCompatActivity {
                 startActivityForResult(intent, 1234);
             }
         });
+
+        buttonDownload = (Button) findViewById(R.id.button_download);
+        buttonDownload.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.dropbox.com/s/4b3fj7j4qihjof3/PreptoQuestions.xls?dl=0"));
+                startActivity(intent);
+            }
+        });
+
     }
 
     @Override
