@@ -14,14 +14,14 @@ public class StudentDashboard extends AppCompatActivity {
 
     Toolbar toolbar;
     android.support.v7.app.ActionBarDrawerToggle mDrawerToggle;
+    Button b1;
+    Button b2;
     private String[] mNavigationDrawerItemTitles;
     private DrawerLayout mDrawerLayout;
     private ListView mDrawerList;
     private ArrayAdapter<String> mDrawerAdapter;
     private CharSequence mDrawerTitle;
     private CharSequence mTitle;
-    Button b1;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +36,20 @@ public class StudentDashboard extends AppCompatActivity {
                 intent.putExtra("Week", 1);
                 startActivity(intent);
             }
-        });        /* This is the old button function
+        });
+
+        b2 = (Button) findViewById(R.id.student_view_2);
+        b2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = new Intent(StudentDashboard.this, WeeklyVideoPage.class);
+                intent.putExtra("Week", 2);
+                startActivity(intent);
+            }
+        });
+
+        /* This is the old button function
         buttonNext = (Button) findViewById(R.id.button_test);
         buttonNext.setOnClickListener(new View.OnClickListener() {
             @Override

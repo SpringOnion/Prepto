@@ -58,7 +58,6 @@ public class TeacherDashboard extends AppCompatActivity {
         SQLiteDatabase db = DatabaseHelper.getInstance(TeacherDashboard.this).getWritableDatabase();
         ContentValues values = new ContentValues();
         String query = "SELECT * FROM QUESTIONS";
-        String getQuizCount = "SELECT quiz FROM QUESTIONS";
 
         Cursor cursor = db.rawQuery(query, null);
         int count = cursor.getCount();

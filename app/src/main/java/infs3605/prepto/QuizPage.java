@@ -1,5 +1,6 @@
 package infs3605.prepto;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -7,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 /**
  * Created by chenz on 30/09/2017.
@@ -24,26 +26,33 @@ public class QuizPage extends AppCompatActivity {
     Question[] questions;
     int score;
     int totalAnswered = 0;
-
-    private DatabaseHelper db;
+    int count = 10;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz);
         int week = getIntent().getExtras().getInt("Week");
-        db = new DatabaseHelper(QuizPage.this);
 
+
+        /*
         int count = getCount(week);
         questions = new Question[count];
         for (int i = 0; i < count; i++) {
             questions[i] = new Question();
         }
         questions = getQuestions(week);
-        setAllText(questions[totalAnswered]);
+        */
+        questions = new Question[10];
+        for (int i = 0; i < 10; i++) {
+            questions[i] = new Question();
+        }
+        questions = getQuestions(2).clone();
 
         quizProg = (ProgressBar) findViewById(R.id.progressBar);
-        responses = new String[questions.length];
+        //responses = new String[questions.length];
+        responses = new String[10];
+
         question = (TextView) findViewById(R.id.text_question);
         answerA = (TextView) findViewById(R.id.textcardA);
         answerA.setOnClickListener(new View.OnClickListener() {
@@ -58,6 +67,7 @@ public class QuizPage extends AppCompatActivity {
                 //toast.show();
                 setAllText(questions[totalAnswered]);
                 totalAnswered++;
+                checkCompletion(totalAnswered);
                 quizProg.incrementProgressBy(10);
             }
         });
@@ -74,6 +84,7 @@ public class QuizPage extends AppCompatActivity {
                 //toast.show();
                 setAllText(questions[totalAnswered]);
                 totalAnswered++;
+                checkCompletion(totalAnswered);
                 quizProg.incrementProgressBy(10);
             }
         });
@@ -90,6 +101,7 @@ public class QuizPage extends AppCompatActivity {
                 //toast.show();
                 setAllText(questions[totalAnswered]);
                 totalAnswered++;
+                checkCompletion(totalAnswered);
                 quizProg.incrementProgressBy(10);
             }
         });
@@ -106,17 +118,28 @@ public class QuizPage extends AppCompatActivity {
                 //toast.show();
                 setAllText(questions[totalAnswered]);
                 totalAnswered++;
+                checkCompletion(totalAnswered);
                 quizProg.incrementProgressBy(10);
             }
         });
 
+        setAllText(questions[0]);
+    }
+
+    private void checkCompletion(int progress) {
+        if (progress >= count) {
+            Intent intent = new Intent(QuizPage.this, StudentDashboard.class);
+            startActivity(intent);
+            Toast.makeText(getApplicationContext(), "Quiz Complete!", Toast.LENGTH_LONG).show();
+        }
     }
 
     public int getCount(int quiz) {
         SQLiteDatabase db = DatabaseHelper.getInstance(QuizPage.this).getReadableDatabase();
-        String query = "SELECT quiz FROM QUESTIONS WHERE quiz = " + quiz + "; ";
+        String query = "SELECT quiz FROM questions WHERE quiz= " + quiz + "; ";
         Cursor cursor = db.rawQuery(query, null);
         int count = cursor.getCount();
+        cursor.close();
         db.close();
         return count;
     }
@@ -127,25 +150,37 @@ public class QuizPage extends AppCompatActivity {
         Cursor cursor = db.rawQuery(query, null);
         int count = cursor.getCount();
         Question[] questions = new Question[count];
+        for (int j = 0; j < count; j++) {
+            questions[j] = new Question();
+        }
         int i = 0;
+        cursor.moveToFirst();
         while (i < count) {
             questions[i].question = cursor.getString(cursor.getColumnIndex("question"));
-            questions[i].answerA = cursor.getString(cursor.getColumnIndex("answera"));
-            questions[i].answerB = cursor.getString(cursor.getColumnIndex("answerb"));
-            questions[i].answerC = cursor.getString(cursor.getColumnIndex("answerc"));
-            questions[i].answerD = cursor.getString(cursor.getColumnIndex("anwerd"));
+            questions[i].answerA = cursor.getString(cursor.getColumnIndex("answerA"));
+            questions[i].answerB = cursor.getString(cursor.getColumnIndex("answerB"));
+            questions[i].answerC = cursor.getString(cursor.getColumnIndex("answerC"));
+            questions[i].answerD = cursor.getString(cursor.getColumnIndex("answerD"));
             questions[i].correctAnswer = cursor.getString(cursor.getColumnIndex("correctanswer"));
             questions[i].quiz = cursor.getInt(cursor.getColumnIndex("quiz"));
+            cursor.moveToNext();
+            i++;
         }
+        cursor.close();
         db.close();
         return questions;
     }
 
     private void setAllText(Question questionBank) {
-        question.setText(questionBank.question);
-        answerA.setText(questionBank.answerA);
-        answerB.setText(questionBank.answerB);
-        answerC.setText(questionBank.answerC);
-        answerD.setText(questionBank.answerD);
+        String q = (questionBank.getQuestion());
+        question.setText(q);
+        String a = (questionBank.getAnswerA());
+        answerA.setText(a);
+        String b = (questionBank.getAnswerB());
+        answerB.setText(b);
+        String c = (questionBank.getAnswerC());
+        answerC.setText(c);
+        String d = (questionBank.getAnswerD());
+        answerD.setText(d);
     }
 }

@@ -22,6 +22,20 @@ public class Question {
         this.correctAnswer = correctAnswer;
     }
 
+    /*
+    protected Question clone (Question question) {
+        Question q = new Question();
+        q.setCorrectAnswer(question.getCorrectAnswer());
+        q.setQuiz(question.getQuiz());
+        q.setQuestion(question.getQuestion());
+        q.setAnswerA(question.getAnswerA());
+        q.setAnswerB(question.getAnswerB());
+        q.setAnswerC(question.getAnswerC());
+        q.setAnswerD(question.getAnswerD());
+        return q;
+    }
+    */
+
     public String getQuestion() {
         return question;
     }
