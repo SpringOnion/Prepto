@@ -1,11 +1,21 @@
 package infs3605.prepto;
 
 import android.app.Activity;
+import android.content.ContentValues;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import static infs3605.prepto.DatabaseHelper.COLUMN_EMAIL;
+import static infs3605.prepto.DatabaseHelper.COLUMN_ID;
+import static infs3605.prepto.DatabaseHelper.COLUMN_NAME;
+import static infs3605.prepto.DatabaseHelper.COLUMN_PASS;
+import static infs3605.prepto.DatabaseHelper.COLUMN_USERNAME;
+import static infs3605.prepto.DatabaseHelper.TABLE_NAME;
 
 /**
  * Created by amarkashyap on 1/10/2017.
@@ -20,6 +30,26 @@ public class SignUp extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.signup);
     }
+
+    public void insertContact(Contact c) {
+        SQLiteDatabase db = DatabaseHelper.getInstance(SignUp.this).getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        String query = "select * from contacts";
+        Cursor cursor = db.rawQuery(query, null);
+        int count = cursor.getCount();
+
+        values.put(COLUMN_ID, count);
+        values.put(COLUMN_NAME, c.getName());
+        values.put(COLUMN_EMAIL, c.getEmail());
+        values.put(COLUMN_USERNAME, c.getUsername());
+        values.put(COLUMN_PASS, c.getPass());
+
+        db.insert(TABLE_NAME, null, values);
+        cursor.close();
+        db.close();
+    }
+
     public void onSignUpClick(View v)
     {
 
@@ -46,7 +76,7 @@ public class SignUp extends Activity {
                 Toast pass = Toast.makeText(SignUp.this , "Passwords dont match!", Toast.LENGTH_SHORT);
                 pass.show();
             } else if (pass1str.equals(pass2str)) {
-                helper.insertContact(contact);
+                insertContact(contact);
                 Toast.makeText(SignUp.this, "Signup complete, " + usernamestr, Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(SignUp.this, LoginPage.class);
                 startActivity(intent);

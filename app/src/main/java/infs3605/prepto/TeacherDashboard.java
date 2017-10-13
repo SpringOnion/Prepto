@@ -1,6 +1,9 @@
 package infs3605.prepto;
 
+import android.content.ContentValues;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -35,6 +38,8 @@ public class TeacherDashboard extends AppCompatActivity {
                 Intent getContentIntent = FileUtils.createGetContentIntent();
                 Intent intent = Intent.createChooser(getContentIntent, "Select a File");
                 startActivityForResult(intent, 1234);
+                //dbHelper.insertDefaultQuestions();
+
             }
         });
 
@@ -47,6 +52,28 @@ public class TeacherDashboard extends AppCompatActivity {
             }
         });
 
+    }
+
+    public void insertQuestions(Question question) {
+        SQLiteDatabase db = DatabaseHelper.getInstance(TeacherDashboard.this).getWritableDatabase();
+        ContentValues values = new ContentValues();
+        String query = "SELECT * FROM QUESTIONS";
+        String getQuizCount = "SELECT quiz FROM QUESTIONS";
+
+        Cursor cursor = db.rawQuery(query, null);
+        int count = cursor.getCount();
+        values.put("ID", count);
+        values.put("question", question.getQuestion());
+        values.put("answera", question.getAnswerA());
+        values.put("answerb", question.getAnswerB());
+        values.put("answerc", question.getAnswerC());
+        values.put("answerd", question.getAnswerD());
+        values.put("correctanswer", question.getCorrectAnswer());
+        values.put("quiz", question.getQuiz());
+
+        db.insert("QUESTIONS", null, values);
+        cursor.close();
+        db.close();
     }
 
     @Override
@@ -92,7 +119,7 @@ public class TeacherDashboard extends AppCompatActivity {
                 }
                 int k = 0;
                 while (k <= j) {
-                    dbHelper.insertQuestions(questions[k]);
+                    insertQuestions(questions[k]);
                     k++;
                 }
                 Toast.makeText(TeacherDashboard.this, "Quiz Uploaded! " + k + " questions added in total", Toast.LENGTH_LONG).show();

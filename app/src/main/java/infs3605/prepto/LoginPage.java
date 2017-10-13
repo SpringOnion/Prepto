@@ -1,6 +1,8 @@
 package infs3605.prepto;
 
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -8,22 +10,18 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import static infs3605.prepto.DatabaseHelper.TABLE_NAME;
 import static infs3605.prepto.R.id.BLogin;
-import static infs3605.prepto.R.id.TFpassword;
 
 public class LoginPage extends AppCompatActivity {
 
     public Button v;
     public Button signup;
-    DatabaseHelper helper = new DatabaseHelper(this);
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
 
         signup = (Button) findViewById(R.id.Bsignup);
         signup.setOnClickListener(new View.OnClickListener() {
@@ -40,31 +38,59 @@ public class LoginPage extends AppCompatActivity {
             public void onClick(View view) {
                 EditText a = (EditText) findViewById(R.id.TFuname);
                 String str = a.getText().toString();
-                EditText b = (EditText) findViewById(TFpassword);
+                EditText b = (EditText) findViewById(R.id.TFpassword);
                 String pass = b.getText().toString();
 
-                String password = helper.searchPass(str);
+                Intent i;
+                String password = searchPass(str);
                 if (pass.equals(password)) {
-                    //Intent i = new Intent(LoginPage.this, StudentDashboard.class);
-                    Intent i = new Intent(LoginPage.this, TeacherDashboard.class);
+                    if (password.equals("student1")) {
+                        i = new Intent(LoginPage.this, StudentDashboard.class);
+                    } else {
+                        i = new Intent(LoginPage.this, TeacherDashboard.class);
+                    }
                     i.putExtra("Username", str);
                     startActivity(i);
+                } else {
+                    Toast.makeText(getApplicationContext(), "Error: could not log you in", Toast.LENGTH_LONG).show();
                 }
             }
         });
     }
 
-        public void onButtonClick(View v)
+    public String searchPass(String username) {
+        SQLiteDatabase db = DatabaseHelper.getInstance(LoginPage.this).getWritableDatabase();
+        String query = "select username, pass from " + TABLE_NAME + " WHERE username ='" + username + "';";
+        Cursor cursor = db.rawQuery(query, null);
+        String a, b;
+        b = "not found";
+        if (cursor.moveToFirst()) {
+            do {
+                a = cursor.getString(0);
+                if (a.equals(username)) {
+                    b = cursor.getString(1);
+                    break;
+                }
+            }
+            while (cursor.moveToNext());
+        }
+        cursor.close();
+        db.close();
+        return b;
+    }
+
+
+    public void onButtonClick(View v)
     {
         if(v.getId() == BLogin)
         {
             EditText a = (EditText) findViewById(R.id.TFuname);
             String str = a.getText().toString();
-            EditText b = (EditText)findViewById(TFpassword);
+            EditText b = (EditText) findViewById(R.id.TFpassword);
             String pass = b.getText().toString();
 
             Toast.makeText(LoginPage.this, str, Toast.LENGTH_SHORT).show();
-            String password = helper.searchPass(str);
+            String password = searchPass(str);
             if(pass.equals(password))
             {
                 Toast.makeText(LoginPage.this, "Everything's working! Yay", Toast.LENGTH_SHORT).show();

@@ -62,6 +62,14 @@ public class Question {
         this.answerD = answerD;
     }
 
+    public String getCorrectAnswer() {
+        return correctAnswer;
+    }
+
+    public void setCorrectAnswer(String correctAnswer) {
+        this.correctAnswer = correctAnswer;
+    }
+
     public int getQuiz() {
         return quiz;
     }

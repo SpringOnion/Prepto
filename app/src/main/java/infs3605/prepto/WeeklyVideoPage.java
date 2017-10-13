@@ -14,7 +14,7 @@ import com.google.android.youtube.player.YouTubePlayerFragment;
 public class WeeklyVideoPage extends YouTubeBaseActivity implements YouTubePlayer.OnInitializedListener {
 
     static final String GOOGLE_API_KEY = "AIzaSyClFw7LYLSxONvMZmyQz0L-eQ5Cz9GAIcM";
-    static String YOUTUBE_VIDEO_ID = "s--OlqAFaOQ";
+    static String YOUTUBE_VIDEO_ID;
     //private YouTubePlayerView youTubeView;
     YouTubePlayerFragment youTubePlayerFragment;
     FloatingActionButton buttonNext;
@@ -23,8 +23,15 @@ public class WeeklyVideoPage extends YouTubeBaseActivity implements YouTubePlaye
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_weekly_video_page_test);
-        //youTubeView = findViewById(R.id.youtube_view);
-        //youTubeView.initialize(GOOGLE_API_KEY, this);
+
+        int week = getIntent().getExtras().getInt("Week");
+        if (week == 1) {
+            YOUTUBE_VIDEO_ID = "JvXro0dzJY8";
+        } else if (week == 2) {
+            YOUTUBE_VIDEO_ID = "KOxdqo4eAZM";
+        } else {
+            YOUTUBE_VIDEO_ID = "sbXe__EtGg4";
+        }
         youTubePlayerFragment = (YouTubePlayerFragment) getFragmentManager().findFragmentById(R.id.youtubeplayerfragment);
         youTubePlayerFragment.initialize(GOOGLE_API_KEY, this);
         buttonNext = findViewById(R.id.button_video_next);
