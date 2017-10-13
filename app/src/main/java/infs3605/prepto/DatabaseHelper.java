@@ -42,6 +42,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(TABLE_CREATE);
         db.execSQL(TABLE_CREATE_QUIZ);
         this.db = db;
+        LoginPage lg = new LoginPage();
+        lg.addBaseContacts();
+        lg.addBaseQuestions();
     }
 
     @Override
