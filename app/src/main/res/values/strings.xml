@@ -7,21 +7,17 @@
 
     <string name="action_settings">Settings</string>
     <string name="chosenSub">INFS2607</string>
-
     <string name="long_text">Short summary of tutorial content</string>
-
     <string name="action_view">View</string>
     <string name="action_flag">Flag</string>
     <string name="action_upload_video">Upload</string>
     <string name="action_upload_text">Upload</string>
-
     <string name="video_manuscript">Video manuscript</string>
     <string name="studentswitch">STUDENT</string>
 
 
-    <string name="video_upload_description">Simply paste video source link</string>
+    <string name="video_upload_description">Simply paste a video source link</string>
     <string name="quiz_upload_description">Upload an excel file</string>
-
 
     <string-array name="navigation_drawer_items_array">
         <item>Calendar</item>

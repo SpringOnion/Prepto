@@ -23,6 +23,7 @@ public class TeacherDashboard extends AppCompatActivity {
 
     private Button buttonFile;
     private Button buttonDownload;
+    private Button buttonChart;
     private File excelBook;
     private DatabaseHelper dbHelper = new DatabaseHelper(this);
 
@@ -52,6 +53,15 @@ public class TeacherDashboard extends AppCompatActivity {
             }
         });
 
+        buttonChart = (Button) findViewById(R.id.button_chart);
+        buttonChart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(TeacherDashboard.this, AnalyticsPage.class);
+                intent.putExtra("Week", 1);
+                startActivity(intent);
+            }
+        });
     }
 
     public void insertQuestions(Question question) {

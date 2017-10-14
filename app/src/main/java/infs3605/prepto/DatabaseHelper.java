@@ -73,46 +73,52 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public void addBaseResults() {
         Result[] results = new Result[100];
-        for (Result r : results) {
-            r = new Result();
-            r.setQuiz(1);
-            r.setStudent("z1234567");
-        }
-        int check = 0;
-        String[] choices = new String[]{"A", "B", "C", "D"};
-        int choiceCheck = 0;
         for (int i = 0; i < 100; i++) {
-            results[i].setQuestionID((i % 10) + 1);
-            results[i].setCorrectAnswer(choices[choiceCheck]);
-            if (choiceCheck >= 3) {
-                choiceCheck = 0;
+            results[i] = new Result();
+            results[i].setQuiz(1);
+            results[i].setStudent("z1234567");
+            results[i].setCorrectAnswer("A");
+            if (i < 10) {
+                results[i].setQuestionID(1);
+            } else if (i < 20) {
+                results[i].setQuestionID(2);
+            } else if (i < 30) {
+                results[i].setQuestionID(3);
+            } else if (i < 40) {
+                results[i].setQuestionID(4);
+            } else if (i < 50) {
+                results[i].setQuestionID(5);
+            } else if (i < 60) {
+                results[i].setQuestionID(6);
+            } else if (i < 70) {
+                results[i].setQuestionID(7);
+            } else if (i < 80) {
+                results[i].setQuestionID(8);
+            } else if (i < 90) {
+                results[i].setQuestionID(9);
+            } else if (i < 100) {
+                results[i].setQuestionID(10);
+            }
+            if ((i % 10) < 5) {
+                results[i].setResult("A");
             } else {
-                choiceCheck++;
+                results[i].setResult("B");
             }
-            switch (check % 10) {
-                case 0:
-                case 4:
-                case 8:
-                    results[i].setResult("A");
-                    break;
-                case 1:
-                case 5:
-                case 9:
-                    results[i].setResult("B");
-                    break;
-                case 2:
-                case 6:
-                    results[i].setResult("C");
-                    break;
-                case 3:
-                case 7:
-                    results[i].setResult("D");
-                    break;
-                default:
-                    results[i].setResult("A");
-                    break;
-            }
-            check++;
+        }
+
+        for (int j = 0; j < 100; j++) {
+            ContentValues values = new ContentValues();
+            String query = "SELECT * FROM results";
+
+            Cursor cursor = db.rawQuery(query, null);
+            values.put("quiz", results[j].getQuiz());
+            values.put("student", results[j].getStudent());
+            values.put("questionID", results[j].getQuestionID());
+            values.put("correctanswer", results[j].getCorrectAnswer());
+            values.put("result", results[j].getResult());
+
+            db.insert("results", null, values);
+            cursor.close();
         }
     }
 
