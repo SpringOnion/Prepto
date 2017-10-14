@@ -51,6 +51,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         this.db = db;
         addBaseContacts();
         addBaseQuestions();
+        addBaseResults();
     }
 
     public void addBaseContacts() {
