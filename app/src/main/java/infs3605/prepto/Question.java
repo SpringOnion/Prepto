@@ -5,6 +5,7 @@ package infs3605.prepto;
  */
 
 public class Question {
+    int id;
     String question, answerA, answerB, answerC, answerD, correctAnswer;
     int quiz;
 
@@ -12,7 +13,8 @@ public class Question {
 
     }
 
-    public Question(String question, String answerA, String answerB, String answerC, String answerD, String correctAnswer, int quiz) {
+    public Question(int id, String question, String answerA, String answerB, String answerC, String answerD, String correctAnswer, int quiz) {
+        this.id = id;
         this.question = question;
         this.answerA = answerA;
         this.answerB = answerB;
@@ -22,6 +24,13 @@ public class Question {
         this.correctAnswer = correctAnswer;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
     /*
     protected Question clone (Question question) {
         Question q = new Question();

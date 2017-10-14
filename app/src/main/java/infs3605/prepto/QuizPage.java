@@ -1,5 +1,6 @@
 package infs3605.prepto;
 
+import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -27,13 +28,15 @@ public class QuizPage extends AppCompatActivity {
     int score;
     int totalAnswered = 0;
     int count = 10;
+    int week;
+    String student;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz);
-        int week = getIntent().getExtras().getInt("Week");
-
+        week = getIntent().getExtras().getInt("Week");
+        student = getIntent().getExtras().getString("Student");
 
         /*
         int count = getCount(week);
@@ -58,11 +61,11 @@ public class QuizPage extends AppCompatActivity {
         answerA.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (questions[totalAnswered].getCorrectAnswer().equals("answerA")) {
+                if (questions[totalAnswered].getCorrectAnswer().equals("A")) {
                     score++;
                 } else {
                 }
-                responses[totalAnswered] = "answerA";
+                responses[totalAnswered] = "A";
                 //Toast toast = Toast.makeText(getApplicationContext(), "Answer " + totalAnswered + ": " + responses[totalAnswered] + ", Score = " + score, Toast.LENGTH_LONG);
                 //toast.show();
                 setAllText(questions[totalAnswered]);
@@ -75,11 +78,11 @@ public class QuizPage extends AppCompatActivity {
         answerB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (questions[totalAnswered].getCorrectAnswer().equals("answerB")) {
+                if (questions[totalAnswered].getCorrectAnswer().equals("B")) {
                     score++;
                 } else {
                 }
-                responses[totalAnswered] = "answerB";
+                responses[totalAnswered] = "B";
                 //Toast toast = Toast.makeText(getApplicationContext(), "Answer " + totalAnswered + ": " + responses[totalAnswered] + ", Score = " + score, Toast.LENGTH_LONG);
                 //toast.show();
                 setAllText(questions[totalAnswered]);
@@ -92,11 +95,11 @@ public class QuizPage extends AppCompatActivity {
         answerC.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (questions[totalAnswered].getCorrectAnswer().equals("answerC")) {
+                if (questions[totalAnswered].getCorrectAnswer().equals("C")) {
                     score++;
                 } else {
                 }
-                responses[totalAnswered] = "answerC";
+                responses[totalAnswered] = "C";
                 //Toast toast = Toast.makeText(getApplicationContext(), "Answer " + totalAnswered + ": " + responses[totalAnswered] + ", Score = " + score, Toast.LENGTH_LONG);
                 //toast.show();
                 setAllText(questions[totalAnswered]);
@@ -109,11 +112,11 @@ public class QuizPage extends AppCompatActivity {
         answerD.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (questions[totalAnswered].getCorrectAnswer().equals("answerD")) {
+                if (questions[totalAnswered].getCorrectAnswer().equals("D")) {
                     score++;
                 } else {
                 }
-                responses[totalAnswered] = "answerD";
+                responses[totalAnswered] = "D";
                 //Toast toast = Toast.makeText(getApplicationContext(), "Answer " + totalAnswered + ": " + responses[totalAnswered] + ", Score = " + score, Toast.LENGTH_LONG);
                 //toast.show();
                 setAllText(questions[totalAnswered]);
@@ -128,11 +131,42 @@ public class QuizPage extends AppCompatActivity {
 
     private void checkCompletion(int progress) {
         if (progress >= count) {
+            Result[] result = new Result[count];
+            for (int i = 0; i < count; i++) {
+                result[i] = new Result();
+                result[i].setQuiz(week);
+                result[i].setCorrectAnswer(questions[i].getCorrectAnswer());
+                result[i].setQuestionID(questions[i].getId());
+                result[i].setResult(responses[i]);
+                result[i].setStudent(student);
+            }
+            for (Result r : result) {
+                uploadResults(r);
+            }
+
             Intent intent = new Intent(QuizPage.this, StudentDashboard.class);
+            intent.putExtra("Username", student);
             startActivity(intent);
             Toast.makeText(getApplicationContext(), "Quiz Complete!", Toast.LENGTH_LONG).show();
         }
     }
+
+    private void uploadResults(Result results) {
+        SQLiteDatabase db = DatabaseHelper.getInstance(QuizPage.this).getWritableDatabase();
+        String query = "select * from results";
+        Cursor cursor = db.rawQuery(query, null);
+        ContentValues values = new ContentValues();
+        values.put("quiz", results.getQuiz());
+        values.put("correctanswer", results.getCorrectAnswer());
+        values.put("questionID", results.getQuestionID());
+        values.put("result", results.getResult());
+        values.put("student", results.getStudent());
+
+        db.insert("results", null, values);
+        cursor.close();
+        db.close();
+    }
+
 
     public int getCount(int quiz) {
         SQLiteDatabase db = DatabaseHelper.getInstance(QuizPage.this).getReadableDatabase();
@@ -156,6 +190,7 @@ public class QuizPage extends AppCompatActivity {
         int i = 0;
         cursor.moveToFirst();
         while (i < count) {
+            questions[i].id = cursor.getInt((cursor.getColumnIndex("ID")));
             questions[i].question = cursor.getString(cursor.getColumnIndex("question"));
             questions[i].answerA = cursor.getString(cursor.getColumnIndex("answerA"));
             questions[i].answerB = cursor.getString(cursor.getColumnIndex("answerB"));

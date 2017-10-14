@@ -16,6 +16,7 @@ public class StudentDashboard extends AppCompatActivity {
     android.support.v7.app.ActionBarDrawerToggle mDrawerToggle;
     Button b1;
     Button b2;
+    String username;
     private String[] mNavigationDrawerItemTitles;
     private DrawerLayout mDrawerLayout;
     private ListView mDrawerList;
@@ -27,6 +28,7 @@ public class StudentDashboard extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_navigation);
+        username = getIntent().getExtras().getString("Username");
 
         b1 = (Button) findViewById(R.id.student_view_1);
         b1.setOnClickListener(new View.OnClickListener() {
@@ -34,6 +36,7 @@ public class StudentDashboard extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(StudentDashboard.this, WeeklyVideoPage.class);
                 intent.putExtra("Week", 1);
+                intent.putExtra("Student", username);
                 startActivity(intent);
             }
         });
@@ -45,6 +48,7 @@ public class StudentDashboard extends AppCompatActivity {
 
                 Intent intent = new Intent(StudentDashboard.this, WeeklyVideoPage.class);
                 intent.putExtra("Week", 2);
+                intent.putExtra("Student", username);
                 startActivity(intent);
             }
         });

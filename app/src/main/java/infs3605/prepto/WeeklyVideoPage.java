@@ -25,6 +25,7 @@ public class WeeklyVideoPage extends YouTubeBaseActivity implements YouTubePlaye
         setContentView(R.layout.activity_weekly_video_page_test);
 
         int week = getIntent().getExtras().getInt("Week");
+        final String username = getIntent().getExtras().getString("Student");
         if (week == 1) {
             YOUTUBE_VIDEO_ID = "JvXro0dzJY8";
         } else if (week == 2) {
@@ -41,6 +42,7 @@ public class WeeklyVideoPage extends YouTubeBaseActivity implements YouTubePlaye
                 int week = getIntent().getExtras().getInt("Week");
                 Intent intent = new Intent(WeeklyVideoPage.this, QuizPage.class);
                 intent.putExtra("Week", week);
+                intent.putExtra("Student", username);
                 startActivity(intent);
             }
         });

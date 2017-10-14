@@ -21,10 +21,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final int DATABASE_VERSION = 1;
     private static final String TABLE_CREATE = "create table contacts (id integer primary key not null, " + "" +
             "name text not null, email text not null, username text not null, pass text not null)";
-    private static final String TABLE_CREATE_QUIZ = "CREATE TABLE QUESTIONS (ID integer primary key autoincrement, " +
+    private static final String TABLE_CREATE_QUIZ = "CREATE TABLE QUESTIONS (ID integer primary key AUTOINCREMENT not null, " +
             "question text not null, answerA text not null, answerB text not null, " +
             "answerC text not null, answerD text not null, correctanswer text not null, " +
             "quiz integer not null); ";
+    private static final String TABLE_CREATE_RESULTS = "create table results (ID integer primary key AUTOINCREMENT not null, " +
+            "questionID integer, quiz integer not null, correctanswer text not null, " +
+            "result text not null, student text not null); ";
+
     private static DatabaseHelper instance;
     private SQLiteDatabase db;
 
@@ -43,6 +47,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(TABLE_CREATE);
         db.execSQL(TABLE_CREATE_QUIZ);
+        db.execSQL(TABLE_CREATE_RESULTS);
         this.db = db;
         addBaseContacts();
         addBaseQuestions();
@@ -69,7 +74,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         Question[] questions = new Question[10];
         for (int i = 0; i < 10; i++) {
             questions[i] = new Question();
+            questions[i].setId(i);
         }
+
         questions[0].setQuestion("");
         questions[1].setQuestion("");
         questions[2].setQuestion("");

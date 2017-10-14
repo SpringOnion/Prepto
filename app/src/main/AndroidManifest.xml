@@ -25,8 +25,8 @@
         <activity android:name=".CalendarPage" />
         <activity android:name=".WeeklyVideoPage" />
         <activity android:name=".QuizPage" />
-        <activity android:name=".SignUp"></activity>
-        <activity android:name=".TeacherDashboard"></activity>
+        <activity android:name=".SignUp" />
+        <activity android:name=".TeacherDashboard" />
         <activity
             android:name="com.ipaulpro.afilechooser.FileChooserActivity"
             android:enabled="@bool/use_activity"
@@ -40,8 +40,7 @@
                 <data android:mimeType="*/*" />
             </intent-filter>
         </activity>
-
-
+        <activity android:name=".AnalyticsPage"></activity>
     </application>
 
 </manifest>
