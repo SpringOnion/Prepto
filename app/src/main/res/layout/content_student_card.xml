@@ -21,6 +21,7 @@ android:padding="10dp"
         android:orientation="vertical">
 
         <android.support.v7.widget.CardView
+            android:id="@+id/cardWeek1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:cardBackgroundColor="#ffffff"
@@ -41,7 +42,7 @@ android:padding="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="100dp"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/apphome" />
+                    android:src="@drawable/week1class" />
 
                 <View
                     android:layout_width="match_parent"
@@ -53,7 +54,7 @@ android:padding="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingLeft="8dp"
-                    android:text="Week1"
+                    android:text="Week 1"
                     android:textColor="@android:color/black"
                     android:textSize="15sp"
                     android:textStyle="bold" />
@@ -93,6 +94,7 @@ android:padding="10dp"
         </android.support.v7.widget.CardView>
 
         <android.support.v7.widget.CardView
+            android:id="@+id/cardWeek2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
@@ -103,7 +105,7 @@ android:padding="10dp"
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="187dp"
                 android:orientation="vertical"
                 android:paddingBottom="8dp"
                 android:paddingLeft="0dp"
@@ -113,7 +115,7 @@ android:padding="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="100dp"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/apphome" />
+                    android:src="@drawable/week2class" />
 
                 <View
                     android:layout_width="match_parent"
@@ -164,6 +166,7 @@ android:padding="10dp"
         </android.support.v7.widget.CardView>
 
         <android.support.v7.widget.CardView
+            android:id="@+id/cardWeek3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
@@ -174,7 +177,7 @@ android:padding="10dp"
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="185dp"
                 android:orientation="vertical"
                 android:paddingBottom="8dp"
                 android:paddingLeft="0dp"
@@ -184,7 +187,7 @@ android:padding="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="100dp"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/apphome" />
+                    android:src="@drawable/week3class" />
 
                 <View
                     android:layout_width="match_parent"
