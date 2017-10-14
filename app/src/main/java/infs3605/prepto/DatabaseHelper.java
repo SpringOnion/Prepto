@@ -70,6 +70,51 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.insert("contacts", null, second);
     }
 
+    public void addBaseResults() {
+        Result[] results = new Result[100];
+        for (Result r : results) {
+            r = new Result();
+            r.setQuiz(1);
+            r.setStudent("z1234567");
+        }
+        int check = 0;
+        String[] choices = new String[]{"A", "B", "C", "D"};
+        int choiceCheck = 0;
+        for (int i = 0; i < 100; i++) {
+            results[i].setQuestionID((i % 10) + 1);
+            results[i].setCorrectAnswer(choices[choiceCheck]);
+            if (choiceCheck >= 3) {
+                choiceCheck = 0;
+            } else {
+                choiceCheck++;
+            }
+            switch (check % 10) {
+                case 0:
+                case 4:
+                case 8:
+                    results[i].setResult("A");
+                    break;
+                case 1:
+                case 5:
+                case 9:
+                    results[i].setResult("B");
+                    break;
+                case 2:
+                case 6:
+                    results[i].setResult("C");
+                    break;
+                case 3:
+                case 7:
+                    results[i].setResult("D");
+                    break;
+                default:
+                    results[i].setResult("A");
+                    break;
+            }
+            check++;
+        }
+    }
+
     public void addBaseQuestions() {
         Question[] questions = new Question[10];
         for (int i = 0; i < 10; i++) {

@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
 import com.github.mikephil.charting.charts.BarChart;
+import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
 
@@ -16,7 +17,7 @@ public class AnalyticsPage extends AppCompatActivity {
     BarChart barchart;
     Result[] results;
     ArrayList<BarEntry> entries;
-    ArrayList<String> xAxis;
+    ArrayList<String> xAxisValues;
     int week;
     int length;
 
@@ -59,10 +60,14 @@ public class AnalyticsPage extends AppCompatActivity {
                 }
             }
             entries.add(new BarEntry(nums[j], j));
-            xAxis.add((String) nums[j]))
+            xAxisValues.add(Integer.toString(nums[j] + 1));
             lowestQuestion++;
         }
         BarDataSet dataset = new BarDataSet(entries, "Results for quiz " + week);
+        BarData data = new BarData(dataset);
+        barchart.setData(data);
+        barchart.setContentDescription("Results for the quiz in week " + week + "showing aggregate scores.");
+
     }
 
     private int getQuizCount(int quiz) {
