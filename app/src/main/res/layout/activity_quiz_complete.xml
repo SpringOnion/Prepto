@@ -128,7 +128,7 @@
         android:textSize="70sp"
         android:textStyle="bold"
         android:backgroundTint="@android:color/transparent"
-        app:layout_constraintLeft_toRightOf="@+id/editText"
+        app:layout_constraintLeft_toRightOf="@+id/teacherUploadWeekHeading"
         app:layout_constraintRight_toRightOf="@+id/scoreProgressBar"
         app:layout_constraintTop_toTopOf="@+id/scoreProgressBar"
         android:layout_marginTop="8dp"

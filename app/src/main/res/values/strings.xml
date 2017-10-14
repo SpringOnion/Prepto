@@ -12,8 +12,14 @@
 
     <string name="action_view">View</string>
     <string name="action_flag">Flag</string>
+    <string name="action_upload_video">Upload</string>
+    <string name="action_upload_text">Upload</string>
 
     <string name="video_manuscript">Video manuscript</string>
+
+    <string name="video_upload_description">Simply paste video source link</string>
+    <string name="quiz_upload_description">Upload an excel file</string>
+
 
     <string-array name="navigation_drawer_items_array">
         <item>Calendar</item>

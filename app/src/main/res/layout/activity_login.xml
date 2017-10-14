@@ -83,8 +83,7 @@
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:textColorHint="#cccccc">
+            android:layout_marginTop="30dp">
 
             <EditText
                 android:id="@+id/TFuname"
@@ -116,7 +115,8 @@
                 android:hint="   Password"
                 android:inputType="textPassword"
                 android:singleLine="true"
-                android:textColor="#ffffff"
+                android:textColor="@color/cardview_dark_background"
+                android:textColorHint="@color/cardview_dark_background"
                 android:textSize="20sp" />
 
             <!--android:drawableLeft="@drawable/smallicon" -->
