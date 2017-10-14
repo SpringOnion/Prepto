@@ -24,26 +24,61 @@
         app:layout_constraintVertical_bias="0.661"
         app:srcCompat="@drawable/apphome" />
 
-    <Button
-        android:id="@+id/Bsignupbutton"
-        android:layout_width="288dp"
+    <LinearLayout
+        android:id="@+id/checkandbutton"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="25dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="34dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:background="@color/colorAccent"
-        android:onClick="onSignUpClick"
-        android:text="Signup"
-        android:textColor="@android:color/white"
-        android:textSize="20sp"
+        android:layout_marginRight="0dp"
+        android:orientation="horizontal"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="@+id/loginbackgroundimage"
         app:layout_constraintRight_toRightOf="@+id/loginbackgroundimage"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintHorizontal_bias="0.0">
+
+        <Switch
+            android:id="@+id/switch1"
+            style="@android:style/Widget.CompoundButton.Switch"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="9dp"
+            android:layout_weight="0.45"
+            android:checked="true"
+            android:splitTrack="false"
+            android:switchTextAppearance="@android:style/TextAppearance.Material.Widget.Switch"
+            android:text="@string/studentswitch"
+            android:textAlignment="center"
+            android:textColor="@android:color/white"
+            android:textOff="Student"
+            android:textOn="Teacher"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/Bsignupbutton"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_weight="0.67"
+            android:background="@color/colorAccent"
+            android:onClick="onSignUpClick"
+            android:text="Sign up"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="@+id/loginbackgroundimage"
+            app:layout_constraintRight_toRightOf="@+id/loginbackgroundimage"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0" />
+    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/namelayout"
@@ -57,7 +92,7 @@
         app:layout_constraintLeft_toLeftOf="@+id/loginbackgroundimage"
         app:layout_constraintRight_toRightOf="@+id/loginbackgroundimage"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/email_layout"
+        app:layout_constraintBottom_toTopOf="@+id/email_layout"
         android:layout_marginStart="40dp"
         android:layout_marginEnd="60dp"
         app:layout_constraintVertical_bias="1.0">
@@ -100,7 +135,7 @@
         app:layout_constraintLeft_toLeftOf="@+id/loginbackgroundimage"
         app:layout_constraintRight_toRightOf="@+id/loginbackgroundimage"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/new_username_layout"
+        app:layout_constraintBottom_toTopOf="@+id/new_username_layout"
         app:layout_constraintVertical_bias="1.0"
         android:layout_marginStart="40dp"
         android:layout_marginEnd="60dp">
@@ -142,7 +177,7 @@
         android:layout_marginStart="40dp"
         android:layout_marginTop="8dp"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@id/passwordlayout"
+        app:layout_constraintBottom_toTopOf="@+id/passwordlayout"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="@+id/loginbackgroundimage"
         app:layout_constraintRight_toRightOf="@+id/loginbackgroundimage"
@@ -185,10 +220,9 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintVertical_bias="0.13"
-        app:layout_constraintBottom_toTopOf="@id/confirm_password_layout"
+        app:layout_constraintBottom_toTopOf="@+id/confirm_password_layout"
         android:layout_marginStart="40dp"
-        android:layout_marginEnd="60dp"
-        tools:layout_editor_absoluteY="0dp">
+        android:layout_marginEnd="60dp">
 
         <ImageView
             android:id="@+id/password_image"
@@ -219,16 +253,16 @@
         android:id="@+id/confirm_password_layout"
         android:layout_width="0dp"
         android:layout_height="60dp"
+        android:layout_marginBottom="75dp"
+        android:layout_marginEnd="60dp"
         android:layout_marginLeft="40dp"
         android:layout_marginRight="60dp"
+        android:layout_marginStart="40dp"
         android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="@+id/checkandbutton"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintBottom_toBottomOf="@id/Bsignupbutton"
-        android:layout_marginStart="40dp"
-        android:layout_marginEnd="60dp"
-        android:layout_marginBottom="59dp">
+        app:layout_constraintRight_toRightOf="parent">
 
         <ImageView
             android:id="@+id/confirm_password_image"
