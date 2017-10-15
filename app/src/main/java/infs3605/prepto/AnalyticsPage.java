@@ -56,6 +56,8 @@ public class AnalyticsPage extends AppCompatActivity implements IAxisValueFormat
         XAxis xaxis = barchart.getXAxis();
         YAxis yaxis = barchart.getAxis(YAxis.AxisDependency.RIGHT);
         YAxis leftaxis = barchart.getAxis(YAxis.AxisDependency.LEFT);
+        yaxis.setAxisMinimum(0);
+        leftaxis.setAxisMinimum(0);
         yaxis.setDrawGridLines(false);
         xaxis.setDrawGridLines(false);
         yaxis.setValueFormatter(this);

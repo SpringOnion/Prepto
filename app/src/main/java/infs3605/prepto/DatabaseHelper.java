@@ -99,7 +99,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             } else if (i < 100) {
                 results[i].setQuestionID(10);
             }
-            if ((i % 10) < 5) {
+            if ((i % 10) < 6 || i == 99 || i == 69 || i == 39 || i == 38 || i == 98 || i == 97 || i == 18 || i == 19) {
                 results[i].setResult("A");
             } else {
                 results[i].setResult("B");
@@ -129,7 +129,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             questions[i].setId(i);
         }
 
-        questions[0].setQuestion("");
+        questions[0].setQuestion("Where does the process of IP addressing and routing take place?");
         questions[1].setQuestion("");
         questions[2].setQuestion("");
         questions[3].setQuestion("");
@@ -141,7 +141,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         questions[9].setQuestion("");
 
 
-        questions[0].setAnswerA("");
+        questions[0].setAnswerA("Network Access");
         questions[1].setAnswerA("");
         questions[2].setAnswerA("");
         questions[3].setAnswerA("");
@@ -152,7 +152,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         questions[8].setAnswerA("");
         questions[9].setAnswerA("");
 
-        questions[0].setAnswerB("");
+        questions[0].setAnswerB("Transport");
         questions[1].setAnswerB("");
         questions[2].setAnswerB("");
         questions[3].setAnswerB("");
@@ -163,7 +163,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         questions[8].setAnswerB("");
         questions[9].setAnswerB("");
 
-        questions[0].setAnswerC("");
+        questions[0].setAnswerC("Application");
         questions[1].setAnswerC("");
         questions[2].setAnswerC("");
         questions[3].setAnswerC("");
@@ -174,7 +174,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         questions[8].setAnswerC("");
         questions[9].setAnswerC("");
 
-        questions[0].setAnswerD("");
+        questions[0].setAnswerD("Internet Access");
         questions[1].setAnswerD("");
         questions[2].setAnswerD("");
         questions[3].setAnswerD("");
@@ -185,7 +185,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         questions[8].setAnswerD("");
         questions[9].setAnswerD("");
 
-        questions[0].setCorrectAnswer("");
+        questions[0].setCorrectAnswer("D");
         questions[1].setCorrectAnswer("");
         questions[2].setCorrectAnswer("");
         questions[3].setCorrectAnswer("");

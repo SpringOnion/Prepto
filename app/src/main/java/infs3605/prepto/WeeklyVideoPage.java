@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.youtube.player.YouTubeBaseActivity;
@@ -18,6 +19,9 @@ public class WeeklyVideoPage extends YouTubeBaseActivity implements YouTubePlaye
     //private YouTubePlayerView youTubeView;
     YouTubePlayerFragment youTubePlayerFragment;
     FloatingActionButton buttonNext;
+    TextView contentWeek;
+    TextView contentTitle;
+    TextView contentDesc;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +37,15 @@ public class WeeklyVideoPage extends YouTubeBaseActivity implements YouTubePlaye
         } else {
             YOUTUBE_VIDEO_ID = "sbXe__EtGg4";
         }
+        contentWeek = findViewById(R.id.contentWeek);
+        contentWeek.setText("W E E K 2");
+
+        contentTitle = findViewById(R.id.contentTopic);
+        contentTitle.setText("Ethernet Protocol");
+
+        contentDesc = findViewById(R.id.text_manuscript);
+        contentDesc.setText("In this video, you will learn about the basics of how Ethernet LAN Protocol and Network Connections work.");
+
         youTubePlayerFragment = (YouTubePlayerFragment) getFragmentManager().findFragmentById(R.id.youtubeplayerfragment);
         youTubePlayerFragment.initialize(GOOGLE_API_KEY, this);
         buttonNext = findViewById(R.id.button_video_next);

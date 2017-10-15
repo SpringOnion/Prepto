@@ -22,6 +22,7 @@ public class QuizPage extends AppCompatActivity {
     TextView answerB;
     TextView answerC;
     TextView answerD;
+    TextView completion;
     ProgressBar quizProg;
     String[] responses;
     Question[] questions;
@@ -52,10 +53,11 @@ public class QuizPage extends AppCompatActivity {
         }
         questions = getQuestions(2).clone();
 
-        quizProg = (ProgressBar) findViewById(R.id.progressBar);
         //responses = new String[questions.length];
         responses = new String[10];
 
+        completion = (TextView) findViewById(R.id.test_completion);
+        completion.setText("1 / " + responses.length);
         question = (TextView) findViewById(R.id.text_question);
         answerA = (TextView) findViewById(R.id.textcardA);
         answerA.setOnClickListener(new View.OnClickListener() {
@@ -70,8 +72,8 @@ public class QuizPage extends AppCompatActivity {
                 //toast.show();
                 setAllText(questions[totalAnswered]);
                 totalAnswered++;
+                completion.setText((totalAnswered + 1) + " / " + responses.length);
                 checkCompletion(totalAnswered);
-                quizProg.incrementProgressBy(10);
             }
         });
         answerB = (TextView) findViewById(R.id.textcardB);
@@ -87,8 +89,8 @@ public class QuizPage extends AppCompatActivity {
                 //toast.show();
                 setAllText(questions[totalAnswered]);
                 totalAnswered++;
+                completion.setText((totalAnswered + 1) + " / " + responses.length);
                 checkCompletion(totalAnswered);
-                quizProg.incrementProgressBy(10);
             }
         });
         answerC = (TextView) findViewById(R.id.textcardC);
@@ -104,8 +106,8 @@ public class QuizPage extends AppCompatActivity {
                 //toast.show();
                 setAllText(questions[totalAnswered]);
                 totalAnswered++;
+                completion.setText((totalAnswered + 1) + " / " + responses.length);
                 checkCompletion(totalAnswered);
-                quizProg.incrementProgressBy(10);
             }
         });
         answerD = (TextView) findViewById(R.id.textcardD);
@@ -121,8 +123,8 @@ public class QuizPage extends AppCompatActivity {
                 //toast.show();
                 setAllText(questions[totalAnswered]);
                 totalAnswered++;
+                completion.setText((totalAnswered + 1) + " / " + responses.length);
                 checkCompletion(totalAnswered);
-                quizProg.incrementProgressBy(10);
             }
         });
 
