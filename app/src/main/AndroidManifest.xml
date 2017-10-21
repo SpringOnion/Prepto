@@ -40,7 +40,7 @@
                 <data android:mimeType="*/*" />
             </intent-filter>
         </activity>
-        <activity android:name=".AnalyticsPage"></activity>
+        <activity android:name=".AnalyticsPage" />
     </application>
 
 </manifest>

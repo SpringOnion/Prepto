@@ -17,7 +17,7 @@
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="32dp"
         android:background="@color/White"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -40,8 +40,10 @@
     <LinearLayout
         android:layout_width="324dp"
         android:layout_height="240dp"
+        android:layout_marginEnd="5dp"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
+        android:layout_marginStart="5dp"
         android:layout_marginTop="8dp"
         android:orientation="vertical"
         app:layout_constraintHorizontal_bias="0.51"
@@ -201,7 +203,7 @@
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="0dp"
-        android:layout_height="67dp"
+        android:layout_height="56dp"
         android:background="?attr/colorPrimary"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
@@ -212,17 +214,52 @@
 
     <TextView
         android:id="@+id/test_completion"
-        android:layout_width="139dp"
-        android:layout_height="66dp"
-        android:layout_marginBottom="0dp"
+        android:layout_width="135dp"
+        android:layout_height="53dp"
+        android:layout_marginEnd="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
         android:text="TextView"
         android:textAlignment="center"
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="@+id/toolbar"
         app:layout_constraintLeft_toLeftOf="@+id/toolbar"
-        app:layout_constraintRight_toRightOf="@+id/toolbar"
-        tools:layout_editor_absoluteY="501dp" />
+        app:layout_constraintRight_toRightOf="@+id/toolbar" />
+
+    <TextView
+        android:id="@+id/text_quiz_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="16dp"
+        android:text="Week 2 REVIEW"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/card_question"
+        card_view:layout_constraintLeft_toLeftOf="parent"
+        card_view:layout_constraintRight_toRightOf="parent"
+        card_view:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/button_result_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginStart="16dp"
+        android:text="Back"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        card_view:layout_constraintLeft_toLeftOf="parent" />
+
+    <Button
+        android:id="@+id/button_result_next"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:text="Next"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
 
 </android.support.constraint.ConstraintLayout>

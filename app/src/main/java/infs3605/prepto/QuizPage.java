@@ -17,6 +17,7 @@ import android.widget.Toast;
 
 public class QuizPage extends AppCompatActivity {
 
+    TextView header;
     TextView question;
     TextView answerA;
     TextView answerB;
@@ -39,23 +40,22 @@ public class QuizPage extends AppCompatActivity {
         week = getIntent().getExtras().getInt("Week");
         student = getIntent().getExtras().getString("Student");
 
-        /*
         int count = getCount(week);
         questions = new Question[count];
         for (int i = 0; i < count; i++) {
             questions[i] = new Question();
         }
-        questions = getQuestions(week);
-        */
-        questions = new Question[10];
-        for (int i = 0; i < 10; i++) {
-            questions[i] = new Question();
+
+        questions = getQuestions(week).clone();
+        if (questions == null || questions.length == 0) {
+            Intent intent = new Intent(QuizPage.this, StudentDashboard.class);
+            startActivity(intent);
+            Toast.makeText(this, "We couldn't find a quiz for you to complete.", Toast.LENGTH_LONG).show();
         }
-        questions = getQuestions(2).clone();
+        responses = new String[questions.length];
 
-        //responses = new String[questions.length];
-        responses = new String[10];
-
+        header = (TextView) findViewById(R.id.text_quiz_title);
+        header.setText("Week " + week + " QUIZ");
         completion = (TextView) findViewById(R.id.test_completion);
         completion.setText("1 / " + responses.length);
         question = (TextView) findViewById(R.id.text_question);
@@ -63,6 +63,8 @@ public class QuizPage extends AppCompatActivity {
         answerA.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //Correct Code, DO NOT TOUCH
+
                 if (questions[totalAnswered].getCorrectAnswer().equals("A")) {
                     score++;
                 } else {
@@ -74,6 +76,7 @@ public class QuizPage extends AppCompatActivity {
                 totalAnswered++;
                 completion.setText((totalAnswered + 1) + " / " + responses.length);
                 checkCompletion(totalAnswered);
+
             }
         });
         answerB = (TextView) findViewById(R.id.textcardB);
@@ -141,6 +144,7 @@ public class QuizPage extends AppCompatActivity {
                 result[i].setQuestionID(questions[i].getId());
                 result[i].setResult(responses[i]);
                 result[i].setStudent(student);
+                result[i].setQuestionText(questions[i].getQuestion());
             }
             for (Result r : result) {
                 uploadResults(r);
@@ -163,7 +167,7 @@ public class QuizPage extends AppCompatActivity {
         values.put("questionID", results.getQuestionID());
         values.put("result", results.getResult());
         values.put("student", results.getStudent());
-
+        values.put("questiontext", results.getQuestionText());
         db.insert("results", null, values);
         cursor.close();
         db.close();

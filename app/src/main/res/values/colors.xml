@@ -8,6 +8,10 @@
     <color name="primaryText">#333333</color>
     <color name="colorLemon">#fdd73e</color>
     <color name="colorQuiz">#eb7d00</color>
+    <color name="colorRed">#FF0000</color>
+    <color name="colorGreen">#008000</color>
+
+    <color name="black_overlay">#66000000</color>
 
 
 </resources>

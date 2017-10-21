@@ -24,10 +24,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String TABLE_CREATE_QUIZ = "CREATE TABLE QUESTIONS (ID integer primary key AUTOINCREMENT not null, " +
             "question text not null, answerA text not null, answerB text not null, " +
             "answerC text not null, answerD text not null, correctanswer text not null, " +
-            "quiz integer not null); ";
+            "quiz integer not null, hint text); ";
     private static final String TABLE_CREATE_RESULTS = "create table results (ID integer primary key AUTOINCREMENT not null, " +
             "questionID integer, quiz integer not null, correctanswer text not null, " +
-            "result text not null, student text not null); ";
+            "result text not null, student text not null, questiontext text not null); ";
+    private static final String TABLE_CREATE_YOUTUBE = "create table video (ID integer primary key AUTOINCREMENT not null, " +
+            "week integer not null, link text not null); ";
 
     private static DatabaseHelper instance;
     private SQLiteDatabase db;
@@ -48,10 +50,19 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(TABLE_CREATE);
         db.execSQL(TABLE_CREATE_QUIZ);
         db.execSQL(TABLE_CREATE_RESULTS);
+        db.execSQL(TABLE_CREATE_YOUTUBE);
         this.db = db;
         addBaseContacts();
         addBaseQuestions();
         addBaseResults();
+        addBaseVideos();
+    }
+
+    public void addBaseVideos() {
+        ContentValues values = new ContentValues();
+        values.put("week", 1);
+        values.put("link", "JvXro0dzJY8");
+        db.insert("video", null, values);
     }
 
     public void addBaseContacts() {
@@ -80,26 +91,36 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             results[i].setCorrectAnswer("A");
             if (i < 10) {
                 results[i].setQuestionID(1);
+                results[i].setQuestionText("Where does the process of IP addressing and routing take place?");
             } else if (i < 20) {
                 results[i].setQuestionID(2);
+                results[i].setQuestionText("");
             } else if (i < 30) {
+                results[i].setQuestionText("");
                 results[i].setQuestionID(3);
             } else if (i < 40) {
                 results[i].setQuestionID(4);
+                results[i].setQuestionText("");
             } else if (i < 50) {
                 results[i].setQuestionID(5);
+                results[i].setQuestionText("");
             } else if (i < 60) {
                 results[i].setQuestionID(6);
+                results[i].setQuestionText("");
             } else if (i < 70) {
                 results[i].setQuestionID(7);
+                results[i].setQuestionText("");
             } else if (i < 80) {
                 results[i].setQuestionID(8);
+                results[i].setQuestionText("");
             } else if (i < 90) {
                 results[i].setQuestionID(9);
+                results[i].setQuestionText("");
             } else if (i < 100) {
                 results[i].setQuestionID(10);
+                results[i].setQuestionText("");
             }
-            if ((i % 10) < 6 || i == 99 || i == 69 || i == 39 || i == 38 || i == 98 || i == 97 || i == 18 || i == 19) {
+            if ((i % 10) < 5 || i == 99 || i == 69 || i == 39 || i == 38 || i == 98 || i == 97 || i == 18 || i == 19 || i == 16 || i == 25 || i == 17 || i == 56) {
                 results[i].setResult("A");
             } else {
                 results[i].setResult("B");
@@ -116,7 +137,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             values.put("questionID", results[j].getQuestionID());
             values.put("correctanswer", results[j].getCorrectAnswer());
             values.put("result", results[j].getResult());
-
             db.insert("results", null, values);
             cursor.close();
         }
@@ -196,6 +216,18 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         questions[8].setCorrectAnswer("");
         questions[9].setCorrectAnswer("");
 
+        questions[0].setHint("The network system is instantiated at the network level, not at the application level or the internet level. This is for both performance and security reasons. ");
+        questions[1].setHint("");
+        questions[2].setHint("");
+        questions[3].setHint("");
+        questions[4].setHint("");
+        questions[5].setHint("");
+        questions[6].setHint("");
+        questions[7].setHint("");
+        questions[8].setHint("");
+        questions[9].setHint("");
+
+
         questions[0].setQuiz(2);
         questions[1].setQuiz(2);
         questions[2].setQuiz(2);
@@ -221,6 +253,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             values.put("answerd", questions[j].getAnswerD());
             values.put("correctanswer", questions[j].getCorrectAnswer());
             values.put("quiz", questions[j].getQuiz());
+            values.put("hint", questions[j].getHint());
 
             db.insert("QUESTIONS", null, values);
             cursor.close();

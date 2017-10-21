@@ -1,6 +1,8 @@
 package infs3605.prepto;
 
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.view.View;
@@ -53,7 +55,12 @@ public class WeeklyVideoPage extends YouTubeBaseActivity implements YouTubePlaye
             @Override
             public void onClick(View view) {
                 int week = getIntent().getExtras().getInt("Week");
-                Intent intent = new Intent(WeeklyVideoPage.this, QuizPage.class);
+                Intent intent;
+                if (getQuizResults(week, username)) {
+                    intent = new Intent(WeeklyVideoPage.this, QuizResultPage.class);
+                } else {
+                    intent = new Intent(WeeklyVideoPage.this, QuizPage.class);
+                }
                 intent.putExtra("Week", week);
                 intent.putExtra("Student", username);
                 startActivity(intent);
@@ -80,4 +87,18 @@ public class WeeklyVideoPage extends YouTubeBaseActivity implements YouTubePlaye
 
     }
 
+    private boolean getQuizResults(int week, String username) {
+        SQLiteDatabase db = DatabaseHelper.getInstance(this).getReadableDatabase();
+        String query = "SELECT quiz FROM results WHERE quiz=" + week + "AND student='" + username + "'; ";
+        Cursor cursor = db.rawQuery(query, null);
+        if (cursor.moveToFirst()) {
+            cursor.close();
+            db.close();
+            return true;
+        } else {
+            cursor.close();
+            db.close();
+            return false;
+        }
+    }
 }

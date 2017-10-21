@@ -45,12 +45,13 @@ public class AnalyticsPage extends AppCompatActivity implements IAxisValueFormat
         results = getResultsByQuiz(week);
         setupInitialChart(results);
 
-        dataset = new BarDataSet(entries, "Results from Week " + week);
+        dataset = new BarDataSet(entries, "Results");
+        dataset.setColor(R.color.colorGreen);
         BarData data = new BarData(dataset);
         barchart.setData(data);
-        barchart.setContentDescription("Results for the quiz in week " + week + "showing aggregate scores.");
+        barchart.setContentDescription("Results from your quizzes done so far: ");
         Description desc = new Description();
-        desc.setText("Results for the quiz in week " + week + "showing aggregate scores across the different questions. ");
+        desc.setText("Results from your quizzes done so far: ");
         desc.setTextSize(16);
         barchart.setDescription(desc);
         XAxis xaxis = barchart.getXAxis();

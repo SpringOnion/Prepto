@@ -28,7 +28,7 @@ import jxl.Workbook;
 public class TeacherDashboard extends AppCompatActivity {
 
     String videoLink;
-    String videoWeek;
+    int videoWeek;
     private Button buttonFile;
     private Button buttonDownload;
     private Button buttonChart;
@@ -67,7 +67,7 @@ public class TeacherDashboard extends AppCompatActivity {
                 input.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_URI);
                 input.setHint("Link");
                 final EditText week = new EditText(TeacherDashboard.this);
-                input.setInputType(InputType.TYPE_CLASS_TEXT);
+                input.setInputType(InputType.TYPE_CLASS_NUMBER);
                 week.setHint("Week/Quiz");
 
                 layout.addView(input);
@@ -78,9 +78,11 @@ public class TeacherDashboard extends AppCompatActivity {
                 builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        videoLink = input.getText().toString();
-                        videoWeek = week.getText().toString();
-                        //TODO: LInk this to database
+                        String link = input.getText().toString();
+                        String quiz = week.getText().toString();
+                        videoWeek = Integer.parseInt(quiz);
+                        videoLink = link.replace("https://www.youtube.com/watch?v=", "");
+                        insertVideos(videoLink, videoWeek);
                         Toast.makeText(TeacherDashboard.this, "Sucessfully uploaded your video", Toast.LENGTH_LONG).show();
                     }
                 });
@@ -106,6 +108,21 @@ public class TeacherDashboard extends AppCompatActivity {
         });
     }
 
+    private void insertVideos(String link, int week) {
+        SQLiteDatabase db = DatabaseHelper.getInstance(TeacherDashboard.this).getWritableDatabase();
+        String query = "SELECT week FROM video WHERE week=" + week + "; ";
+        Cursor cursor = db.rawQuery(query, null);
+        if (cursor.moveToFirst()) {
+            String update = "UPDATE video SET link = '" + link + "' WHERE week = " + week + "; ";
+            db.execSQL(update);
+        } else {
+            ContentValues values = new ContentValues();
+            values.put("link", link);
+            values.put("week", week);
+            db.insert("video", null, values);
+        }
+    }
+
     public void insertQuestions(Question question) {
         SQLiteDatabase db = DatabaseHelper.getInstance(TeacherDashboard.this).getWritableDatabase();
         ContentValues values = new ContentValues();
@@ -121,6 +138,7 @@ public class TeacherDashboard extends AppCompatActivity {
         values.put("answerd", question.getAnswerD());
         values.put("correctanswer", question.getCorrectAnswer());
         values.put("quiz", question.getQuiz());
+        values.put("hint", question.getHint());
 
         db.insert("QUESTIONS", null, values);
         cursor.close();
@@ -165,6 +183,8 @@ public class TeacherDashboard extends AppCompatActivity {
                     question.answerD = cellText.getContents();
                     cellText = sheet.getCell(j, 5);
                     question.correctAnswer = cellText.getContents();
+                    cellText = sheet.getCell(j, 6);
+                    question.setHint(cellText.getContents());
                     questions[j] = question;
                     j++;
                 }

@@ -7,18 +7,27 @@ package infs3605.prepto;
 public class Result {
 
     int id, quiz, questionID;
-    String correctAnswer, result, student;
+    String correctAnswer, result, student, questionText;
 
     public Result() {
     }
 
-    public Result(int id, int quiz, int questionID, String correctAnswer, String result, String student) {
+    public Result(int id, int quiz, int questionID, String correctAnswer, String result, String student, String questionText) {
         this.id = id;
         this.quiz = quiz;
         this.questionID = questionID;
         this.correctAnswer = correctAnswer;
         this.result = result;
         this.student = student;
+        this.questionText = questionText;
+    }
+
+    public String getQuestionText() {
+        return questionText;
+    }
+
+    public void setQuestionText(String questionText) {
+        this.questionText = questionText;
     }
 
     public int getId() {

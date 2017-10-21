@@ -6,22 +6,32 @@ package infs3605.prepto;
 
 public class Question {
     int id;
-    String question, answerA, answerB, answerC, answerD, correctAnswer;
+    String question, answerA, answerB, answerC, answerD, correctAnswer, hint;
     int quiz;
 
     public Question() {
 
     }
 
-    public Question(int id, String question, String answerA, String answerB, String answerC, String answerD, String correctAnswer, int quiz) {
+    public Question(int id, String question, String answerA, String answerB, String answerC, String answerD, String correctAnswer, String hint, int quiz) {
         this.id = id;
         this.question = question;
         this.answerA = answerA;
         this.answerB = answerB;
         this.answerC = answerC;
         this.answerD = answerD;
-        this.quiz = quiz;
         this.correctAnswer = correctAnswer;
+        this.hint = hint;
+        this.quiz = quiz;
+    }
+
+    public String getHint() {
+
+        return hint;
+    }
+
+    public void setHint(String hint) {
+        this.hint = hint;
     }
 
     public int getId() {
