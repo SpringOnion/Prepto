@@ -53,6 +53,15 @@ public class TeacherDashboard extends AppCompatActivity {
             }
         });
 
+        buttonDownload = (Button) findViewById(R.id.downloadExcelButton);
+        buttonDownload.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.dropbox.com/s/ulyapoiu1yhcse4/PreptoFormat.xls?dl=0"));
+                startActivity(intent);
+            }
+        });
+
         uploadVideo = (TextView) findViewById(R.id.uploadVideoButton);
         uploadVideo.setOnClickListener(new View.OnClickListener() {
             @Override

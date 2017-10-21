@@ -209,10 +209,20 @@
 
                 <Button
                     android:id="@+id/uploadQuizButton"
-                    android:layout_width="85dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingLeft="0dp"
                     android:text="@string/action_upload_video"
+                    android:textAlignment="center"
+                    android:theme="@style/PrimaryFlatButton" />
+
+                <Button
+                    android:id="@+id/downloadExcelButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:paddingLeft="0dp"
+                    android:text="Download Format"
                     android:textAlignment="center"
                     android:theme="@style/PrimaryFlatButton" />
             </LinearLayout>
