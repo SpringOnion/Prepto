@@ -24,6 +24,7 @@ public class WeeklyVideoPage extends YouTubeBaseActivity implements YouTubePlaye
     TextView contentWeek;
     TextView contentTitle;
     TextView contentDesc;
+    Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +40,16 @@ public class WeeklyVideoPage extends YouTubeBaseActivity implements YouTubePlaye
         } else {
             YOUTUBE_VIDEO_ID = "sbXe__EtGg4";
         }
+        if (getQuizResults(week, username)) {
+            intent = new Intent(WeeklyVideoPage.this, QuizReviewActivity.class);
+            Toast.makeText(this, "Press next to go to the quiz review", Toast.LENGTH_SHORT).show();
+        } else {
+            intent = new Intent(WeeklyVideoPage.this, QuizPage.class);
+            Toast.makeText(this, "Press next to go to the quiz", Toast.LENGTH_SHORT).show();
+        }
+        intent.putExtra("Week", week);
+        intent.putExtra("Student", username);
+
         contentWeek = findViewById(R.id.contentWeek);
         contentWeek.setText("W E E K 2");
 
@@ -54,15 +65,7 @@ public class WeeklyVideoPage extends YouTubeBaseActivity implements YouTubePlaye
         buttonNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                int week = getIntent().getExtras().getInt("Week");
-                Intent intent;
-                if (getQuizResults(week, username)) {
-                    intent = new Intent(WeeklyVideoPage.this, QuizResultPage.class);
-                } else {
-                    intent = new Intent(WeeklyVideoPage.this, QuizPage.class);
-                }
-                intent.putExtra("Week", week);
-                intent.putExtra("Student", username);
+                Toast.makeText(WeeklyVideoPage.this, "Going to quiz", Toast.LENGTH_SHORT).show();
                 startActivity(intent);
             }
         });
@@ -89,7 +92,7 @@ public class WeeklyVideoPage extends YouTubeBaseActivity implements YouTubePlaye
 
     private boolean getQuizResults(int week, String username) {
         SQLiteDatabase db = DatabaseHelper.getInstance(this).getReadableDatabase();
-        String query = "SELECT quiz FROM results WHERE quiz=" + week + "AND student='" + username + "'; ";
+        String query = "SELECT quiz FROM results WHERE quiz='" + week + "' AND student='" + username + "'; ";
         Cursor cursor = db.rawQuery(query, null);
         if (cursor.moveToFirst()) {
             cursor.close();

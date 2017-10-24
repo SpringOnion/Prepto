@@ -25,6 +25,7 @@
         <activity android:name=".CalendarPage" />
         <activity android:name=".WeeklyVideoPage" />
         <activity android:name=".QuizPage" />
+        <activity android:name=".QuizResultPage" />
         <activity android:name=".SignUp" />
         <activity android:name=".TeacherDashboard" />
         <activity
@@ -41,6 +42,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".AnalyticsPage" />
+        <activity android:name=".QuizReviewActivity"></activity>
     </application>
 
 </manifest>

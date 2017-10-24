@@ -89,6 +89,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             results[i].setQuiz(1);
             results[i].setStudent("z1234567");
             results[i].setCorrectAnswer("A");
+            results[i].setQuestionText("");
             if (i < 10) {
                 results[i].setQuestionID(1);
                 results[i].setQuestionText("Where does the process of IP addressing and routing take place?");
@@ -137,6 +138,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             values.put("questionID", results[j].getQuestionID());
             values.put("correctanswer", results[j].getCorrectAnswer());
             values.put("result", results[j].getResult());
+            values.put("questiontext", results[j].getQuestionText());
             db.insert("results", null, values);
             cursor.close();
         }

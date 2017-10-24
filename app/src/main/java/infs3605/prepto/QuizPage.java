@@ -37,10 +37,11 @@ public class QuizPage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz);
+
         week = getIntent().getExtras().getInt("Week");
         student = getIntent().getExtras().getString("Student");
 
-        int count = getCount(week);
+        final int count = getCount(week);
         questions = new Question[count];
         for (int i = 0; i < count; i++) {
             questions[i] = new Question();
@@ -72,11 +73,12 @@ public class QuizPage extends AppCompatActivity {
                 responses[totalAnswered] = "A";
                 //Toast toast = Toast.makeText(getApplicationContext(), "Answer " + totalAnswered + ": " + responses[totalAnswered] + ", Score = " + score, Toast.LENGTH_LONG);
                 //toast.show();
-                setAllText(questions[totalAnswered]);
                 totalAnswered++;
-                completion.setText((totalAnswered + 1) + " / " + responses.length);
                 checkCompletion(totalAnswered);
-
+                if (totalAnswered < count) {
+                    setAllText(questions[totalAnswered]);
+                    completion.setText((totalAnswered + 1) + " / " + responses.length);
+                }
             }
         });
         answerB = (TextView) findViewById(R.id.textcardB);
@@ -90,10 +92,12 @@ public class QuizPage extends AppCompatActivity {
                 responses[totalAnswered] = "B";
                 //Toast toast = Toast.makeText(getApplicationContext(), "Answer " + totalAnswered + ": " + responses[totalAnswered] + ", Score = " + score, Toast.LENGTH_LONG);
                 //toast.show();
-                setAllText(questions[totalAnswered]);
                 totalAnswered++;
-                completion.setText((totalAnswered + 1) + " / " + responses.length);
                 checkCompletion(totalAnswered);
+                if (totalAnswered < count) {
+                    setAllText(questions[totalAnswered]);
+                    completion.setText((totalAnswered + 1) + " / " + responses.length);
+                }
             }
         });
         answerC = (TextView) findViewById(R.id.textcardC);
@@ -107,10 +111,12 @@ public class QuizPage extends AppCompatActivity {
                 responses[totalAnswered] = "C";
                 //Toast toast = Toast.makeText(getApplicationContext(), "Answer " + totalAnswered + ": " + responses[totalAnswered] + ", Score = " + score, Toast.LENGTH_LONG);
                 //toast.show();
-                setAllText(questions[totalAnswered]);
                 totalAnswered++;
-                completion.setText((totalAnswered + 1) + " / " + responses.length);
                 checkCompletion(totalAnswered);
+                if (totalAnswered < count) {
+                    setAllText(questions[totalAnswered]);
+                    completion.setText((totalAnswered + 1) + " / " + responses.length);
+                }
             }
         });
         answerD = (TextView) findViewById(R.id.textcardD);
@@ -124,10 +130,12 @@ public class QuizPage extends AppCompatActivity {
                 responses[totalAnswered] = "D";
                 //Toast toast = Toast.makeText(getApplicationContext(), "Answer " + totalAnswered + ": " + responses[totalAnswered] + ", Score = " + score, Toast.LENGTH_LONG);
                 //toast.show();
-                setAllText(questions[totalAnswered]);
                 totalAnswered++;
-                completion.setText((totalAnswered + 1) + " / " + responses.length);
                 checkCompletion(totalAnswered);
+                if (totalAnswered < count) {
+                    setAllText(questions[totalAnswered]);
+                    completion.setText((totalAnswered + 1) + " / " + responses.length);
+                }
             }
         });
 
