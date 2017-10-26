@@ -168,7 +168,7 @@ public class TeacherDashboard extends AppCompatActivity {
                 int i = 1;
                 boolean isContent = true;
                 while (isContent) {
-                    Cell cellText = sheet.getCell(i, 0);
+                    Cell cellText = sheet.getCell(i, 1);
                     if (cellText.getContents().isEmpty()) {
                         isContent = false;
                     } else {
@@ -176,23 +176,26 @@ public class TeacherDashboard extends AppCompatActivity {
                     }
                 }
                 Question[] questions = new Question[i];
-                int j = 0;
+                int j = 1;
                 Cell cellText;
+                Cell quizNumber = sheet.getCell(1, 0);
+                int quiz = (Integer.parseInt(quizNumber.getContents()));
                 while (j < i) {
                     Question question = new Question();
-                    cellText = sheet.getCell(j, 0);
-                    question.question = cellText.getContents();
+                    question.setQuiz(quiz);
                     cellText = sheet.getCell(j, 1);
-                    question.answerA = cellText.getContents();
+                    question.question = cellText.getContents();
                     cellText = sheet.getCell(j, 2);
-                    question.answerB = cellText.getContents();
+                    question.answerA = cellText.getContents();
                     cellText = sheet.getCell(j, 3);
-                    question.answerC = cellText.getContents();
+                    question.answerB = cellText.getContents();
                     cellText = sheet.getCell(j, 4);
-                    question.answerD = cellText.getContents();
+                    question.answerC = cellText.getContents();
                     cellText = sheet.getCell(j, 5);
-                    question.correctAnswer = cellText.getContents();
+                    question.answerD = cellText.getContents();
                     cellText = sheet.getCell(j, 6);
+                    question.correctAnswer = cellText.getContents();
+                    cellText = sheet.getCell(j, 7);
                     question.setHint(cellText.getContents());
                     questions[j] = question;
                     j++;
@@ -205,9 +208,8 @@ public class TeacherDashboard extends AppCompatActivity {
                 Toast.makeText(TeacherDashboard.this, "Quiz Uploaded! " + k + " questions added in total", Toast.LENGTH_LONG).show();
 
             } catch (Exception ex) {
-                //Toast.makeText(this, ex.toString(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, ex.toString(), Toast.LENGTH_SHORT).show();
                 //fake upload
-                Toast.makeText(TeacherDashboard.this, "Quiz Uploaded! " + 10 + " questions added in total", Toast.LENGTH_LONG).show();
             }
         }
     }
